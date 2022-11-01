@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>盒子模型 | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="盒子模型 每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示   QSS-BoxModel">
+<meta property="og:type" content="article">
+<meta property="og:title" content="盒子模型">
+<meta property="og:url" content="https://sunooms.github.io/2022/10/18/QT/qss/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="盒子模型 每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示   QSS-BoxModel">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/eNAicRsqBOmjGVv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/roHCkj7RL9J3Pgu.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/yctb1sZ2JRodrUA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/61L8xA7lC3eSnaO.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/yfu6U4DSARcW3aP.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/dXpCy3x9GtBzcf2.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/2WSmEV1yAOeRCq9.png">
+<meta property="article:published_time" content="2022-10-18T02:30:42.000Z">
+<meta property="article:modified_time" content="2022-10-27T01:14:50.224Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="QSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/19/eNAicRsqBOmjGVv.png">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-QT/qss/盒子模型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/18/QT/qss/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2022-10-18T02:30:42.000Z" itemprop="datePublished">2022-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/QT/">QT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      盒子模型
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="盒子模型">盒子模型</h1>
+<p>每个 Widget 所在的范围都是一个矩形区域（无规则窗口也是一个矩形，只是有的地方是透明的，看上去不是一个矩形），像是一个盒子一样。QSS 支持盒子模型（Box Model），和 CSS 的盒子模型是一样的，由 4 个部分组成：content, padding, border, margin，也就是说，Widget 的矩形区域，用这 4 个矩形表示</p>
+<!--![](./images/QSS-BoxModel-1.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/eNAicRsqBOmjGVv.png" alt="QSS-BoxModel-1.png" /><figcaption aria-hidden="true">QSS-BoxModel-1.png</figcaption>
+</figure>
+<ul>
+<li><code>content</code>: 绘制内容的矩形区域（如绘制文本、图片），Qt 自带的 widget 都是在 content 区里绘制内容，这只是一个约定，只要你愿意，也可以在绘制到 padding, border, margin 区</li>
+<li><code>padding</code>: 内容区和边框之间的间隔</li>
+<li><code>border</code>: 边框，可视化的显示一个 widget 的逻辑范围，而不一定是 widget 所占矩形区域的实际大小</li>
+<li><code>margin</code>: 想像 widget 的矩形区域有一个隐形的边框，margin 就是 border 和这个隐形边框之间的间隔</li>
+</ul>
+<p>QWidget 的 content, padding, border, margin 的矩形区域都是一样大的，也就是说，margin, border, padding 的值为 0，content 的矩形和 QWidget 的矩形一样大，但是 QPushButton 默认的 margin, border, padding 的值不为 0（可以试试 <code>setFlat(true)</code> 后再看看这几个值是什么）。</p>
+<p>Margin，Border，Padding 都分为 4 个部分：上、右、下、左，它们的值可以不同：</p>
+<!--![](./images/QSS-BoxModel-2.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/roHCkj7RL9J3Pgu.png" alt="QSS-BoxModel-2.png" /><figcaption aria-hidden="true">QSS-BoxModel-2.png</figcaption>
+</figure>
+<h1 id="padding-的语法">padding 的语法</h1>
+<p><code>padding: 2px 3px 4px 5px</code>，表示:</p>
+<ul>
+<li>padding-top 为 2px</li>
+<li>padding-right 为 3px</li>
+<li>padding-bottom 为 4px</li>
+<li>padding-left 为 5px</li>
+</ul>
+<p><code>padding: 2px 4px</code> 表示:</p>
+<ul>
+<li>padding-top 和 padding-bottom 为 2px</li>
+<li>padding-right 和 padding-left 为 4px</li>
+</ul>
+<p><code>padding: 2px</code> 表示:</p>
+<ul>
+<li>padding-top、padding-right、padding-bottom、padding-left 都为 2px</li>
+</ul>
+<p>margin 的语法和 padding 的一样，border 除了分成 4 个部分外，还有颜色，圆角等。</p>
+<p>也许你也有和我一样的疑问，为什么上面表示的顺序不是从左开始，而是从上开始？对我来说，从左开始更习惯一些，但是 CSS 和 QSS 里就是这么规定的，没办法，既然不能反抗，那么就享受吧！</p>
+<h1 id="padding-是什么">padding 是什么</h1>
+<p>可能你还是不明白 margin, padding 具体是什么，下面用例子具体的的介绍它们。在 Qt Designer 里用 QGridLayout 布局，拖放一个 QLabel 到窗口上，让其占据整个窗口，用下面的 QSS 把 QLabel 的 margin, border, padding 都设置为 50px：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 50px;</span><br><span class="line">    border: 50px solid rgb(74, 74, 74);</span><br><span class="line">    padding: 50px;</span><br><span class="line">    background: white;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<!--![](./images/QSS-BoxModel-0.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/yctb1sZ2JRodrUA.png" alt="QSS-BoxModel-0.png" /><figcaption aria-hidden="true">QSS-BoxModel-0.png</figcaption>
+</figure>
+<h2 id="在-qt-designer-里选中-qlabel">在 Qt Designer 里选中 QLabel:</h2>
+<ul>
+<li>8 个蓝色小方块内就是 QLabel，外面是 parent widget 的，不属于 QLabel</li>
+<li>标记为 margin 的部分是 margin，为 50px</li>
+<li>标记为 padding 的部分是 padding，为 50px</li>
+<li>用工具测量一下，得到 border 的宽也是 50px</li>
+<li>小虚线方框内是 content rectangle，QLabel 就是在它里面绘制文本，图片等，不会绘制到 padding, border, margin 等上面（如果你自己想继承 QLabel 然后绘制到它们上面当然没问题）</li>
+<li>当拖动修改窗口的大小后，QLabel 的大小随着改变了，但是 margin, border（宽）, padding 的大小都不会变，变化的只有 content rectangle</li>
+<li>Margin 是不可见的，不绘制任何东西</li>
+<li>Padding 是不可见的，但是 QLabel 的背景会绘制到它里面</li>
+<li>Border 是可见的，在背景上面绘制 border（如果 border 是半透明的时候可以看到和背景的融合效果），也就是说，背景会绘制到 padding, border, content 3 个部分上</li>
+<li>Content 是可见的，在背景上绘制 QLabel 的内容：文本，图片</li>
+</ul>
+<h1 id="计算-border-和-content-的矩形">计算 border 和 content 的矩形</h1>
+<p>Padding 和 margin 都是不可见的，用它们来控制间隔，让绘制的效果更好，只有 border 和 content 是可见的。Border 和 content 要绘制在它们自己的矩形区域内，那么这些矩形怎么计算呢？Content 的矩形一定要在 border 的矩形内吗？</p>
+<p>##设定:</p>
+<ul>
+<li>Widget 的矩形为 widgetRect，其实就是 (0, 0, width, height)</li>
+<li>Border 的矩形为 borderRect</li>
+<li>Content 的矩形为 contentRect</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 计算 border 的矩形</span><br><span class="line">borderRect.x = marginLeft</span><br><span class="line">borderRect.y = marginTop</span><br><span class="line">borderRect.width  = widgetRect.width  - marginLeft - marginRight</span><br><span class="line">borderRect.height = widgetRect.height - marginTop  - marginBottom</span><br><span class="line"></span><br><span class="line">// 计算 content 的矩形</span><br><span class="line">contentRect.x = marginLeft + borderLeft + paddingLeft</span><br><span class="line">contentRect.y = marginTop  + borderTop  + paddingTop</span><br><span class="line">contentRect.width  = widgetRect.width -</span><br><span class="line">    marginLeft     - borderLeft   - paddingLeft -</span><br><span class="line">    paddingRight   - borderRight  - marginRight;</span><br><span class="line">contentRect.height = widgetRect.height -</span><br><span class="line">    marginTop      - borderTop    - paddingTop -</span><br><span class="line">    paddingBottom  - borderBottom - marginBottom;</span><br></pre></td></tr></table></figure>
+<h2 id="为了简单起见下面的-margin-指的是它对应的-4-个值而且都一样大padding-也一样">为了简单起见，下面的 margin 指的是它对应的 4 个值，而且都一样大，padding 也一样:</h2>
+<ul>
+<li>Margin 大于 0 时，borderRect 在 widgetRect 内</li>
+<li>Margin 小于 0 时，borderRect 包含 widgetRect</li>
+<li>Padding 大于 0 时，contentRect 在 borderRect 内</li>
+<li>Padding 小于 0 时，contentRect 和 borderRect 中绘制 border 的区域相交，甚至包含 borderRect</li>
+</ul>
+<p>Qt 绘制自带的 Widget 时，先绘制 border，然后才绘制 content 的内容，所以，padding 小于 0 时，可以看到 content 绘制到了 border 上，在 Border-Image 一节里，就会使用这个特点，使得实现的效果更好。</p>
+<h2 id="需要注意的是">需要注意的是:</h2>
+<ul>
+<li>QWidget::contentsRect() 和上面的 contentRect 一样</li>
+<li>QWidget::contentsMargins() 不是 margin，而是 margin + border + padding 的和: content 离边框的距离</li>
+<li>QWidget::size() 返回的是 margin + border + padding + content 的和</li>
+<li>需要注意一点: QSS 中设置的 width, height, min-width, max-height 等设置的都是 content width 和 content height，而 QWidget::size() 返回的却是整个 QWidget 的大小</li>
+</ul>
+<h1 id="可视化盒子模型">可视化盒子模型</h1>
+<p>下面的程序，可以直观地验证盒子模型的理论，有助于加深理解，界面虽然俗气了点，但效果却是不凡，正所谓：大俗即大雅。顶级窗口的 content margin 和 spacing 设置为 0，有 4 个 QLabel，它们只有 border 的颜色不一样，还有一个 QPushButton，按下 QPushButton 时输出左上角 flagLabel 的 size(), contentsRect() 和 contentsMargins()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MainWidget::MainWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent), ui(new Ui::MainWidget) &#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line"></span><br><span class="line">    // 为了简化代码，使用了 C++11 才支持的 Lambda 语法的信号槽连接</span><br><span class="line">    connect(ui-&gt;dumpButton, &amp;QPushButton::clicked, [this]() &#123;</span><br><span class="line">        qDebug() &lt;&lt; &quot;Label size: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;size();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents rect: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsRect();</span><br><span class="line">        qDebug() &lt;&lt; &quot;Contents margins: &quot; &lt;&lt; ui-&gt;flagLabel-&gt;contentsMargins();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    margin: 0px;</span><br><span class="line">    padding: 0px;</span><br><span class="line">    border-width: 30px;</span><br><span class="line">    border-style: solid;</span><br><span class="line">    background: white;</span><br><span class="line">    min-width: 140px;  /* 设置 content rect 的最小 width，不是 widget 的 width() */</span><br><span class="line">    min-height: 140px; /* 设置 content rect 的最小 heightd，不是 widget 的 height()*/</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#flagLabel &#123;</span><br><span class="line">    border-color: qlineargradient(</span><br><span class="line">    spread:pad, x1:0,</span><br><span class="line">    y1:0, x2:0, y2:1,</span><br><span class="line">    stop:0 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.33 rgba(0, 0, 0, 255),</span><br><span class="line">    stop:0.34 rgba(255, 30, 30, 255),</span><br><span class="line">    stop:0.66 rgba(255, 0, 0, 255),</span><br><span class="line">    stop:0.67 rgba(255, 255, 0, 255),</span><br><span class="line">    stop:1 rgba(255, 255, 0, 255));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#greenLabel &#123;</span><br><span class="line">    border-color: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#blueLabel &#123;</span><br><span class="line">    border-color: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">#yellowLabel &#123;</span><br><span class="line">    border-color: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr />
+<p>初始 QSS 如上，效果为:</p>
+<!--![](./images/QSS-BoxModel-3.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/61L8xA7lC3eSnaO.png" alt="QSS-BoxModel-3.png" /><figcaption aria-hidden="true">QSS-BoxModel-3.png</figcaption>
+</figure>
+<blockquote>
+<p>点击 <code>Dump</code> 按钮，输出: Label size: QSize(200, 200) Contents rect: QRect(30,30 140x140) Contents margins: QMargins(30, 30, 30, 30)</p>
+</blockquote>
+<p><strong>由于 margin 为 0px，padding 为 0px，border-width 为 30px, 所以:</strong></p>
+<ul>
+<li><strong>label width</strong>：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200</li>
+<li><strong>label height</strong>：0 + 30 + 0 + 140 + 0 + 30 + 0，为 200</li>
+<li><strong>content rect 的 x</strong>: 0 + 30 + 0，为 30</li>
+<li><strong>content rect 的 y</strong>: 0 + 30 + 0，为 30</li>
+<li><strong>content margin：0 + 30</strong>，为 30</li>
+</ul>
+<hr />
+<p>修改 margin: 20px; padding: 0px;，效果为:</p>
+<!--![](./images/QSS-BoxModel-4.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/yfu6U4DSARcW3aP.png" alt="QSS-BoxModel-4.png" /><figcaption aria-hidden="true">QSS-BoxModel-4.png</figcaption>
+</figure>
+<blockquote>
+<p>点击 <code>Dump</code> 按钮，输出: Label size: QSize(240, 240) Contents rect: QRect(50,50 140x140) Contents margins: QMargins(50, 50, 50, 50)</p>
+</blockquote>
+<p><strong>由于 margin 为 20px，padding 为 0px，所以</strong></p>
+<ul>
+<li><strong>label width</strong>：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240</li>
+<li><strong>label height</strong>：20 + 30 + 0 + 140 + 0 + 30 + 20，为 240</li>
+<li><strong>content rect 的 x</strong>: 20 + 30 + 0，为 50</li>
+<li><strong>content rect 的 y</strong>: 20 + 30 + 0，为 50</li>
+<li><strong>content margin</strong>：20 + 30 + 0，为 50</li>
+</ul>
+<p>左上角 QLabel 的大小为红框括起来的范围，而不是可见的 border 括起来的范围，因为 margin 为 20px。</p>
+<hr />
+<p>修改 margin: 0px; padding: -20px;，效果为:</p>
+<!--![](./images/QSS-BoxModel-5.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/dXpCy3x9GtBzcf2.png" alt="QSS-BoxModel-5.png" /><figcaption aria-hidden="true">QSS-BoxModel-5.png</figcaption>
+</figure>
+<blockquote>
+<p>点击 <code>Dump</code> 按钮，输出: Label size: QSize(160, 160) Contents rect: QRect(10,10 140x140) Contents margins: QMargins(10, 10, 10, 10)</p>
+</blockquote>
+<p><strong>由于 margin 为 0px，padding 为 -20px，所以:</strong></p>
+<ul>
+<li><strong>label width</strong>：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160</li>
+<li><strong>label height</strong>：0 + 30 + -20 + 140 + -20 + 30 + 0，为 160</li>
+<li><strong>content rect</strong> 的 x: 0 + 30 + -20，为 10</li>
+<li><strong>content rect</strong> 的 y: 0 + 30 + -20，为 10</li>
+<li><strong>content margin</strong>：0 + 30 + -20，为 10</li>
+</ul>
+<p>contentRect 和 borderRect 中绘制 border 的区域相交，所以 QLabel 的文本 Flag 被绘制到了 border 上面。</p>
+<hr />
+<p>修改 margin: -10px; padding: -20px;，效果为：</p>
+<!--![](./images/QSS-BoxModel-6.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/2WSmEV1yAOeRCq9.png" alt="QSS-BoxModel-6.png" /><figcaption aria-hidden="true">QSS-BoxModel-6.png</figcaption>
+</figure>
+<blockquote>
+<p>点击 <code>Dump</code> 按钮，输出: Label size: QSize(140, 140) Contents rect: QRect(0,0 140x140) Contents margins: QMargins(0, 0, 0, 0)</p>
+</blockquote>
+<p><strong>由于 margin 为 -10px，padding 为 -20px，所以</strong></p>
+<ul>
+<li><strong>label width</strong>：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140</li>
+<li><strong>label height</strong>：-10 + 30 + -20 + 140 + -20 + 30 + -10，为 140</li>
+<li><strong>content rect 的 x</strong>: -10 + 30 + -20，为 0</li>
+<li><strong>content rect 的 y</strong>: -10 + 30 + -20，为 0</li>
+<li><strong>content margin</strong>：-10 + 30 + -20，为 0</li>
+</ul>
+<p>因为 margin 为 -10px，border-width 为 30px，所以上边的 border 应该从 (-10, -10) 开始绘制，有三分之一给绘制到了 QLabel 的不可见区域，所以从图中看不到，这里我们使用了一个三色的 border，能直观的看到 border 的变化。</p>
+<hr />
+<p>QSS 里盒子模型是很关键的，相信大家现在已经明白了，但是，古人云：纸上得来终觉浅，绝知此事要躬行，请自己尝试修改不同的 margin, border, padding, min-width, min-height 等，计算、对比输出的结果，这样才会有更深刻的体会。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/10/18/QT/qss/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" data-id="cl9y15qfd000ucwtj5sky1q3t" data-title="盒子模型" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/18/QT/qss/QSS%E9%80%89%E6%8B%A9%E5%99%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          QSS选择器
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/18/QT/qss/%E5%8A%A0%E8%BD%BDQSS/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">加载QSS</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 12.5px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 17.5px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/tool_use/markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">markdown数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E6%84%A4%E6%80%92%E7%9A%84%E7%89%9B%E9%A1%BF_%E6%B1%AA%E6%9C%89/">愤怒的牛顿 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E5%85%AB%E5%8D%A6%E5%BE%AE%E7%A7%AF%E5%88%86_%E6%B1%AA%E6%9C%89/">八卦微积分 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/tool_use/blog/Hexo%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo博客支持数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/history/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8E%86%E5%8F%B2(%E4%BA%8C)_%E8%B5%B7%E6%BA%90%E4%B9%8B%E7%89%9B%E9%A1%BF/">微积分的历史(二) 起源之牛顿</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

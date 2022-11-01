@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>VS code 使用 同步配置 | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="[toc] VS Code 的使用 vscode 设置成中文 vscode 默认的语言是英文，对于英文不好的小伙伴可能不太友好。简单几步教大家如何将 vscode 设置成中文。  按快捷键“Ctrl+Shift+P” 在“vscode”顶部会出现一个搜索框。 输入“configure language”，然后回车。 vscode”里面就会打开一个语言配置文件。 将“en-us”修">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS code 使用 同步配置">
+<meta property="og:url" content="https://sunooms.github.io/2022/10/24/tool_use/vscode/VSCode%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="[toc] VS Code 的使用 vscode 设置成中文 vscode 默认的语言是英文，对于英文不好的小伙伴可能不太友好。简单几步教大家如何将 vscode 设置成中文。  按快捷键“Ctrl+Shift+P” 在“vscode”顶部会出现一个搜索框。 输入“configure language”，然后回车。 vscode”里面就会打开一个语言配置文件。 将“en-us”修">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/1jEQLFVckwRaf4P.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/TqUtOX6pNZoHGuM.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/Fjzou1ETwidscHr.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/pmZeDQ3XbIsCaf7.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/b7cj2xfMJwoIROa.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/xgD1IVhjLK2bTA8.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/x1p5Oodl82iTySV.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/VOw9mRT32d1knNZ.webp">
+<meta property="og:image" content="https://s2.loli.net/2022/10/24/MJo73mYDLntNVkK.webp">
+<meta property="article:published_time" content="2022-10-24T08:30:00.000Z">
+<meta property="article:modified_time" content="2022-10-27T01:14:50.225Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="VSCode">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/24/1jEQLFVckwRaf4P.webp">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-tool_use/vscode/VSCode同步配置方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/24/tool_use/vscode/VSCode%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2022-10-24T08:30:00.000Z" itemprop="datePublished">2022-10-24</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      VS code 使用 同步配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="vs-code-的使用">VS Code 的使用</h1>
+<h2 id="vscode-设置成中文">vscode 设置成中文</h2>
+<p>vscode 默认的语言是英文，对于英文不好的小伙伴可能不太友好。简单几步教大家如何将 vscode 设置成中文。</p>
+<ul>
+<li>按快捷键“Ctrl+Shift+P”</li>
+<li>在“vscode”顶部会出现一个搜索框。</li>
+<li>输入“configure language”，然后回车。</li>
+<li>vscode”里面就会打开一个语言配置文件。</li>
+<li>将“en-us”修改成“zh-cn”。</li>
+<li>按“Ctrl+S”保存设置。</li>
+<li>重启“vscode”，再次打开就可以看到中文界面了。</li>
+</ul>
+<h2 id="vscode-的-settings.json-文件">vscode 的 settings.json 文件</h2>
+<p>在 "文件" --&gt; "首选项" --&gt; "设置" --&gt; "Text Editor" --&gt; 在右侧出现的设置界面中下滑，找到并点击【Edit in settings.json】即可打开 settings.json</p>
+<p>下面是一个示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;security.workspace.trust.untrustedFiles&quot;: &quot;open&quot;,</span><br><span class="line">    &quot;files.autoGuessEncoding&quot;: true,</span><br><span class="line">    &quot;security.workspace.trust.enabled&quot;: false,</span><br><span class="line">    &quot;sync.gist&quot;: &quot;dcdd15e4d0510388c0b7af64abf480f9&quot;,</span><br><span class="line">    &quot;editor.defaultFormatter&quot;: &quot;esbenp.prettier-vscode&quot;,</span><br><span class="line">    &quot;editor.formatOnSave&quot;: true,</span><br><span class="line">    /*  prettier格式化 */</span><br><span class="line">    /*  prettier格式化的配置 start */</span><br><span class="line">    &quot;prettier.printWidth&quot;: 100, // 超过最大值换行</span><br><span class="line">    &quot;prettier.tabWidth&quot;: 4, // 缩进字节数</span><br><span class="line">    &quot;prettier.useTabs&quot;: false, // 缩进不使用tab，使用空格</span><br><span class="line">    &quot;prettier.semi&quot;: true, // 句尾添加分号</span><br><span class="line">    &quot;prettier.singleQuote&quot;: true, // 使用单引号代替双引号</span><br><span class="line">    &quot;prettier.proseWrap&quot;: &quot;preserve&quot;, // 默认值。因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行</span><br><span class="line">    &quot;prettier.arrowParens&quot;: &quot;avoid&quot;, //  (x) =&gt; &#123;&#125; 箭头函数参数只有一个时是否要有小括号。avoid：省略括号</span><br><span class="line">    &quot;prettier.bracketSpacing&quot;: true, // 在对象，数组括号与文字之间加空格 &quot;&#123; foo: bar &#125;&quot;</span><br><span class="line">    &quot;prettier.endOfLine&quot;: &quot;auto&quot;, // 结尾是 \n \r \n\r auto</span><br><span class="line">    &quot;prettier.htmlWhitespaceSensitivity&quot;: &quot;ignore&quot;,</span><br><span class="line">    &quot;prettier.ignorePath&quot;: &quot;.prettierignore&quot;, // 不使用prettier格式化的文件填写在项目的.prettierignore文件中</span><br><span class="line">    &quot;prettier.jsxSingleQuote&quot;: false, // 在jsx中使用单引号代替双引号</span><br><span class="line">    &quot;prettier.requireConfig&quot;: false // Require a &#x27;prettierconfig&#x27; to format prettier</span><br><span class="line">    /*  prettier格式化的配置 end */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个参考的 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhaostudy/p/16587780.html">vscode 配置的 settings.json</a></p>
+</blockquote>
+<h2 id="stylelint">stylelint</h2>
+<p>CSS / SCSS / Less 语法检查</p>
+<h2 id="prettier">Prettier</h2>
+<p>比 Beautify 更好用的代码格式化插件</p>
+<ul>
+<li>1 打开 vscode 软件，方便快捷的方式就直接使用快捷键 ctrl+,（是 ctrl 加逗号）唤出快速搜索条界面。</li>
+<li>2 接下来先设定自动保存文件，搜索框贴入 files.autoSave 筛出设置项，并把设置项属性选择为 onFocuschange。</li>
+<li>3 设定编辑器默认代码格式化（美化）的插件为 Prettier，同理在搜索设置框贴入 editor.defaultFormatter，将配置项选择为 Prettier。</li>
+<li>4 设定 Prettier 插件保存时自动格式化代码，搜索设置项贴入 editor.formatOnSave，将如下图所示的选项框打钩即可。</li>
+</ul>
+<p>可以配置.prettierc.js 文件,配合 eslint、git hooks 一起使用，提升项目代码的规范性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    // 一行最多 100 字符</span><br><span class="line">    printWidth: 100,</span><br><span class="line">    // 不使用缩进符，而使用空格</span><br><span class="line">    useTabs: false,</span><br><span class="line">    // 使用 4 个空格缩进</span><br><span class="line">    tabWidth: 4,</span><br><span class="line">    tabSize: 4,</span><br><span class="line">    // 行尾需要有分号</span><br><span class="line">    semi: true,</span><br><span class="line">    // 使用单引号</span><br><span class="line">    singleQuote: true,</span><br><span class="line">    // 对象的 key 仅在必要时用引号</span><br><span class="line">    quoteProps: &#x27;as-needed&#x27;,</span><br><span class="line">    // jsx 不使用单引号，而使用双引号</span><br><span class="line">    jsxSingleQuote: false,</span><br><span class="line">    // 末尾不需要逗号 &#x27;es5&#x27;  none</span><br><span class="line">    trailingComma: &#x27;es5&#x27;,</span><br><span class="line">    // 大括号内的首尾需要空格</span><br><span class="line">    bracketSpacing: true,</span><br><span class="line">    // jsx 标签的反尖括号需要换行</span><br><span class="line">    jsxBracketSameLine: false,</span><br><span class="line">    // 箭头函数，只有一个参数的时候，也需要括号</span><br><span class="line">    arrowParens: &#x27;always&#x27;,</span><br><span class="line">    // 每个文件格式化的范围是文件的全部内容</span><br><span class="line">    rangeStart: 0,</span><br><span class="line">    rangeEnd: Infinity,</span><br><span class="line">    // 不需要写文件开头的 @prettier</span><br><span class="line">    requirePragma: false,</span><br><span class="line">    // 不需要自动在文件开头插入 @prettier</span><br><span class="line">    insertPragma: false,</span><br><span class="line">    // 使用默认的折行标准</span><br><span class="line">    proseWrap: &#x27;preserve&#x27;,</span><br><span class="line">    // 根据显示样式决定 html 要不要折行</span><br><span class="line">    htmlWhitespaceSensitivity: &#x27;css&#x27;,</span><br><span class="line">    // 换行符使用 lf 结尾是 \n \r \n\r auto</span><br><span class="line">    endOfLine: &#x27;lf&#x27;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="vs-code-同步配置的方法">VS Code 同步配置的方法</h1>
+<p>一个编辑工具需要花费大量的时间去配置以及适应使用时间！ 例如把 vscode 配置成满意的方式，如果每换一次电脑就要重新来一次，大家一定会崩溃。放心，早就帮大家准备好了。可以爸 VSCode 的配置同步到网络上，这样可以随时优雅的迁移电脑环境，带走已经熟悉的 VSCode 配置，希望大家有所帮助！</p>
+<p>资料来源“百度搜索”，这个都是公开的方法，参考多位作者的文章，就不列出原文作者。</p>
+<p>同步配置整体流程：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1 安装 `settings sync` 插件</span><br><span class="line">2 登录GitHub</span><br><span class="line">3 上传配置</span><br><span class="line">4 在新的电脑重复1、2步骤，选择一个gist下载配置</span><br></pre></td></tr></table></figure>
+<h2 id="在-vscode-上安装-settings-sync-插件">1 在 vscode 上安装 settings sync 插件</h2>
+<p>在插件商店中搜索 <code>Settings Sync</code>，并安装。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/1jEQLFVckwRaf4P.webp" alt="vscode_settings_sync0.png" /><figcaption aria-hidden="true">vscode_settings_sync0.png</figcaption>
+</figure>
+<h2 id="登录">2 登录</h2>
+<p>登录有两种方式，我一般选择 Github 登录，点击 <code>LOGIN WITH GITHUB</code> 。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/TqUtOX6pNZoHGuM.webp" alt="vscode_settings_sync_2.png" /><figcaption aria-hidden="true">vscode_settings_sync_2.png</figcaption>
+</figure>
+<p>这时候会自动打开默认的浏览器，我们点击 <code>Authorize 用户名</code> 进行授权。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/Fjzou1ETwidscHr.webp" alt="vscode_settings_sync_3.png" /><figcaption aria-hidden="true">vscode_settings_sync_3.png</figcaption>
+</figure>
+<h2 id="上传配置信息">3 上传配置信息</h2>
+<p>授权成功之后，使用 <code>shift + ctrl + p</code> 打开命名面板，输入 <code>Sync</code>，选择 "更新/上传配置" 。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/pmZeDQ3XbIsCaf7.webp" alt="vscode_settings_sync_4.png" /><figcaption aria-hidden="true">vscode_settings_sync_4.png</figcaption>
+</figure>
+<p>这时候会自动创建一条 <code>Gist</code> 信息，并上传至 <code>Github</code> 。上传成功后，控制台会输出提示信息：</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/b7cj2xfMJwoIROa.webp" alt="vscode_settings_sync_5.png" /><figcaption aria-hidden="true">vscode_settings_sync_5.png</figcaption>
+</figure>
+<h2 id="查看-gists-信息">4 查看 Gists 信息</h2>
+<p>在浏览器中登录 <code>Github</code>，打开下拉菜单，选择 <code>Your gists</code> 。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/xgD1IVhjLK2bTA8.webp" alt="vscode_github_gists.png" /><figcaption aria-hidden="true">vscode_github_gists.png</figcaption>
+</figure>
+<p>可以看到刚才创建的 <code>Gist</code> 就已经出现了，点击就可以看到完整的配置信息。</p>
+<h2 id="下载配置">5 下载配置</h2>
+<p>这时候问题就来了，如何在新的电脑中下载 <code>Gist</code> 配置信息呢？方法也非常简单，首先按上述方法进行登录，登录成功后会出现以下界面：</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/x1p5Oodl82iTySV.webp" alt="vscode_download_gists.png" /><figcaption aria-hidden="true">vscode_download_gists.png</figcaption>
+</figure>
+<p>这里展示的是 <code>Github</code> 中所有的 ，一个 <code>Gist</code> 对应一个配置信息，选择你想使用的那个。这时候会把 <code>Gist IF</code> 自动配置到你的 VSCode 中。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/VOw9mRT32d1knNZ.webp" alt="vscode_save_gist_id.png" /><figcaption aria-hidden="true">vscode_save_gist_id.png</figcaption>
+</figure>
+<p>然后再次打开命名面板，输入<code>Sync</code>，选择 <code>下载配置</code> 。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/24/MJo73mYDLntNVkK.webp" alt="vscode_download_settings.png" /><figcaption aria-hidden="true">vscode_download_settings.png</figcaption>
+</figure>
+<p>控制台同样输出相应的提示信息，这时候所有的插件和配置就已经同步过来啦！是不是 so easy！</p>
+<h2 id="总结">6 总结</h2>
+<p>其实 VSCode 有自带的同步功能，在左下角的设置里面。但本人感觉不太好用，配置信息也不知道存在哪里。有兴趣的小伙伴可以自己试一试。</p>
+<blockquote>
+<p>注意：如果在 <code>Github</code> 中打不开 ，那么你可能需要一些上网方法。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/10/24/tool_use/vscode/VSCode%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95/" data-id="cl9y15qfn0029cwtjgyc34h3s" data-title="VS code 使用 同步配置" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/25/QT/qss/examples/qss%E7%BE%8E%E5%8C%96QT%E7%95%8C%E9%9D%A2_QDarkStyleSheet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          QSS美化QT界面--QDarkStyleSheet
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/22/QT/qss/QSS_QCalendatWidget/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">QSS QCalendatWidget</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 12.5px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 17.5px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/tool_use/markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">markdown数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E6%84%A4%E6%80%92%E7%9A%84%E7%89%9B%E9%A1%BF_%E6%B1%AA%E6%9C%89/">愤怒的牛顿 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E5%85%AB%E5%8D%A6%E5%BE%AE%E7%A7%AF%E5%88%86_%E6%B1%AA%E6%9C%89/">八卦微积分 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/tool_use/blog/Hexo%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo博客支持数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/history/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8E%86%E5%8F%B2(%E4%BA%8C)_%E8%B5%B7%E6%BA%90%E4%B9%8B%E7%89%9B%E9%A1%BF/">微积分的历史(二) 起源之牛顿</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>加载QSS | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="加载 QSS 前一章节我们已经知道怎么写简单的 QSS 了，但是，应该把它们放在什么地方才能生效呢？ 加载 QSS 有三种方式:  1 Widget 的对象调用 setStyleSheet(qss) 函数加载 QSS，QSS 的作用域是 widget 自己和它的所有子 widget 2 QApplication 的对象 setStyleSheet(qss) 函数加载 QSS，QSS 的作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="加载QSS">
+<meta property="og:url" content="https://sunooms.github.io/2022/10/18/QT/qss/%E5%8A%A0%E8%BD%BDQSS/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="加载 QSS 前一章节我们已经知道怎么写简单的 QSS 了，但是，应该把它们放在什么地方才能生效呢？ 加载 QSS 有三种方式:  1 Widget 的对象调用 setStyleSheet(qss) 函数加载 QSS，QSS 的作用域是 widget 自己和它的所有子 widget 2 QApplication 的对象 setStyleSheet(qss) 函数加载 QSS，QSS 的作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/RNwDJ6ZqQgjFT8P.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/1FNuaSiMRObyBPU.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/9Lr1gkZdxNpu7El.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/7j4lBFXOwMQnmhr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/wGtEpOP1JIAoqKf.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/jYBOAtbLGxvdc1Z.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/sXUJYl2wFx5mH84.png">
+<meta property="article:published_time" content="2022-10-18T02:30:23.000Z">
+<meta property="article:modified_time" content="2022-10-27T01:14:50.224Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="QSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/19/RNwDJ6ZqQgjFT8P.png">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-QT/qss/加载QSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/18/QT/qss/%E5%8A%A0%E8%BD%BDQSS/" class="article-date">
+  <time class="dt-published" datetime="2022-10-18T02:30:23.000Z" itemprop="datePublished">2022-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/QT/">QT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      加载QSS
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="加载-qss">加载 QSS</h1>
+<p>前一章节我们已经知道怎么写简单的 QSS 了，但是，应该把它们放在什么地方才能生效呢？</p>
+<h1 id="加载-qss-有三种方式">加载 QSS 有三种方式:</h1>
+<ul>
+<li>1 Widget 的对象调用 setStyleSheet(qss) 函数加载 QSS，QSS 的作用域是 widget 自己和它的所有子 widget</li>
+<li>2 QApplication 的对象 setStyleSheet(qss) 函数加载 QSS，QSS 的作用域是整个程序里的所有 widget</li>
+<li>3 在 Qt Designer 的 Change styleSheet... 打开的 QSS 编辑器中添加 QSS，在哪个 widget 上添加的，QSS 的作用域是那个 widget 自己和它的所有子 widget，其实和 1 是一样的，只不这里过是在 Qt Designer 里添加，不是我们自己手动写 C++ 代码添加而已。打开 ui 文件生成的代码(ui_xxxx.h)，可以看到里面也是自动生成代码调用 setStyleSheet(qss) 添加 QSS 的，和我们写代码添加没有区别，只是在 Qt Designer 里添加的话，有时候方便一些，也可以实时看到 QSS 的效果</li>
+</ul>
+<h1 id="widget-加载-qss">Widget 加载 QSS</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QApplication&gt;</span><br><span class="line">#include &lt;QVBoxLayout&gt;</span><br><span class="line">#include &lt;QWidget&gt;</span><br><span class="line">#include &lt;QFrame&gt;</span><br><span class="line">#include &lt;QPushButton&gt;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line"></span><br><span class="line">    // 顶部的 topFrame，里面放了 topButton</span><br><span class="line">    QFrame *topFrame = new QFrame();</span><br><span class="line">    topFrame-&gt;setFrameShape(QFrame::StyledPanel);</span><br><span class="line">    topFrame-&gt;setFrameShadow(QFrame::Raised);</span><br><span class="line">    QPushButton *topButton = new QPushButton(&quot;Top Button&quot;);</span><br><span class="line">    QVBoxLayout *topLayout = new QVBoxLayout();</span><br><span class="line">    topLayout-&gt;addWidget(topButton);</span><br><span class="line">    topFrame-&gt;setLayout(topLayout);</span><br><span class="line"></span><br><span class="line">    // 中部的 bottomFrame，里面放了 middleButton</span><br><span class="line">    QFrame *middleFrame = new QFrame();</span><br><span class="line">    middleFrame-&gt;setFrameShape(QFrame::StyledPanel);</span><br><span class="line">    middleFrame-&gt;setFrameShadow(QFrame::Raised);</span><br><span class="line">    QPushButton *middleButton = new QPushButton(&quot;Middle Button&quot;);</span><br><span class="line">    QVBoxLayout *middleLayout = new QVBoxLayout();</span><br><span class="line">    middleLayout-&gt;addWidget(middleButton);</span><br><span class="line">    middleFrame-&gt;setLayout(middleLayout);</span><br><span class="line"></span><br><span class="line">    // 底部的 bottomButton</span><br><span class="line">    QPushButton *bottomButton = new QPushButton(&quot;Bottom Button&quot;);</span><br><span class="line"></span><br><span class="line">    // 程序的主窗口 mainWidget</span><br><span class="line">    QWidget *mainWidget = new QWidget();</span><br><span class="line">    QVBoxLayout *mainLayout = new QVBoxLayout();</span><br><span class="line">    mainWidget-&gt;setWindowTitle(&quot;加载 QSS&quot;);</span><br><span class="line">    mainLayout-&gt;addWidget(topFrame);</span><br><span class="line">    mainLayout-&gt;addWidget(middleFrame);</span><br><span class="line">    mainLayout-&gt;addWidget(bottomButton);</span><br><span class="line">    mainWidget-&gt;setLayout(mainLayout);</span><br><span class="line"></span><br><span class="line">    mainWidget-&gt;show();</span><br><span class="line"></span><br><span class="line">    // QSS 样式</span><br><span class="line">    QString qss = &quot;QFrame &#123;&quot;</span><br><span class="line">                  &quot;    background: #AAA;&quot;</span><br><span class="line">                  &quot;    border: 2px dashed gray;&quot;</span><br><span class="line">                  &quot;&#125;&quot;</span><br><span class="line">                  &quot;QPushButton &#123;&quot;</span><br><span class="line">                  &quot;    font-size: 20px;&quot;</span><br><span class="line">                  &quot;    padding: 5px 20px;&quot;</span><br><span class="line">                  &quot;    color: black;&quot;</span><br><span class="line">                  &quot;    border: 4px solid gray;&quot;</span><br><span class="line">                  &quot;    background-color: rgb(230, 250, 250);&quot;</span><br><span class="line">                  &quot;&#125;&quot;;</span><br><span class="line"></span><br><span class="line">    // 加载 QSS</span><br><span class="line">    topFrame-&gt;setStyleSheet(qss);</span><br><span class="line"></span><br><span class="line">    return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用 topFrame-&gt;setStyleSheet(qss)，QSS 的作用域是 topFrame 和它的的子 widget topButton, 而 middleFrame，middleButton 和 bottomButton 不受影响，效果如图：</p>
+<!--![](./images/QSS-Load-Widget.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/RNwDJ6ZqQgjFT8P.png" alt="QSS-Load-Widget.png" /><figcaption aria-hidden="true">QSS-Load-Widget.png</figcaption>
+</figure>
+<blockquote>
+<p>注：topFrame-&gt;setStyleSheet("border: 3px solid gray") 这里的 QSS 没有选择器，则 topFrame 和它的所有子 widget 都会使用 QSS border: 3px solid gray 设置 border。</p>
+</blockquote>
+<h1 id="qapplication-加载-qss">QApplication 加载 QSS</h1>
+<p>把上面程序中的 topFrame-&gt;setStyleSheet(qss) 换成 app.setStyleSheet(qss)，则 QSS 的作用域是整个程序，所有 QFrame 和 QPushButton 都会受到影响，效果如图，所有的 QFrame 和 QPushButton 的样式改变了：</p>
+<!--![](./images/QSS-Load-Application.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/1FNuaSiMRObyBPU.png" alt="QSS-Load-Application.png" /><figcaption aria-hidden="true">QSS-Load-Application.png</figcaption>
+</figure>
+<h1 id="qt-designer-里写-qss">Qt Designer 里写 QSS</h1>
+<h2 id="在-qwidget-里按上面的程序放置-2-个-qframe-和-3-个-qpushbutton">1 在 QWidget 里按上面的程序放置 2 个 QFrame 和 3 个 QPushButton</h2>
+<!--![](./images/QSS-Load-Designer-1.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/9Lr1gkZdxNpu7El.png" alt="QSS-Load-Designer-1.png" /><figcaption aria-hidden="true">QSS-Load-Designer-1.png</figcaption>
+</figure>
+<h2 id="在最外层的-qwidget-上单击右键然后点击-change-stylesheet...">2 在最外层的 QWidget 上单击右键，然后点击 <code>Change styleSheet...</code></h2>
+<!--![](./images/QSS-Load-Designer-2.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/7j4lBFXOwMQnmhr.png" alt="QSS-Load-Designer-2.png" /><figcaption aria-hidden="true">QSS-Load-Designer-2.png</figcaption>
+</figure>
+<h2 id="在弹出的窗口里添加上面的-qss然后点击-apply-按钮可以看到-qss-生效了">3 在弹出的窗口里添加上面的 QSS，然后点击 Apply 按钮，可以看到 QSS 生效了：</h2>
+<!--![](./images/QSS-Load-Designer-3.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/wGtEpOP1JIAoqKf.png" alt="QSS-Load-Designer-3.png" /><figcaption aria-hidden="true">QSS-Load-Designer-3.png</figcaption>
+</figure>
+<!--![](./images/QSS-Load-Designer-4.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/jYBOAtbLGxvdc1Z.png" alt="QSS-Load-Designer-4.png" /><figcaption aria-hidden="true">QSS-Load-Designer-4.png</figcaption>
+</figure>
+<h2 id="如果在-topframe-上单击右键然后点击-change-stylesheet...添加-qss那么-qss-的作用域为-topframe-和它的子-widget">4 如果在 topFrame 上单击右键，然后点击 <code>Change styleSheet...</code>，添加 QSS，那么 QSS 的作用域为 topFrame 和它的子 widget：</h2>
+<!--![](./images/QSS-Load-Designer-5.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/sXUJYl2wFx5mH84.png" alt="QSS-Load-Designer-5.png" /><figcaption aria-hidden="true">QSS-Load-Designer-5.png</figcaption>
+</figure>
+<h1 id="从文件中加载-qss">从文件中加载 QSS</h1>
+<p>如果把 QSS 写死在代码里，修改 QSS 的时候就需要修改程序的源码，就不得不重新编译，打包发布程序，效率低，不灵活，在实际项目里推荐把 QSS 放在文件里，然后读取 QSS 文件内容到程序，调用 setStyleSheet(qss) 加载 QSS，就像下面的代码片段所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">int main(int argc, char *argv[]) &#123;</span><br><span class="line">    QApplication app(argc, argv);</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">    ...</span><br><span class="line">    mainWidget-&gt;show(); // 此处以前的代码和上面的一样</span><br><span class="line"></span><br><span class="line">    // QSS 样式：从文件读取 QSS</span><br><span class="line">    &#123;</span><br><span class="line">        QFile file(&quot;/Users/Biao/Desktop/style.qss&quot;); // QSS 文件路径</span><br><span class="line">        file.open(QIODevice::ReadOnly | QIODevice::Text);</span><br><span class="line">        QString qss(file.readAll());</span><br><span class="line">        app.setStyleSheet(qss);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return app.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>QSS 放在文件里的好处是当 QSS 变化后不需要修改源码，重启程序就可以看到修改后的效果。QSS 变化后也可以不用重启程序，重新调用 qApp-&gt;setStyleSheet(qss) 再加载一次 QSS 就可以了（qApp 是 QApplication 的全局唯一对象，和上面的 app 是同一个对象）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">qDebug() &lt;&lt; qApp &lt;&lt; &quot;, &quot; &lt;&lt; (&amp;app); // 可以看到它们输出的地址是一样的</span><br><span class="line">// 我这输出：QApplication(0x7fff5975bc90) ,  QApplication(0x7fff5975bc90)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>重新加载 QSS 的方式很多，可以在快捷键的槽函数里加载，也可以点击菜单项或者点击按钮加载，可以是任何方式，只要能加载就可以，管他黑猫白猫，抓住耗子就是好猫。</p>
+<h1 id="小技巧">小技巧</h1>
+<h2 id="我会常用下面的方式来使用-qss">我会常用下面的方式来使用 QSS:</h2>
+<ul>
+<li>1 先在 Qt Designer 里写 QSS，能实时的看到效果，满意后把这些 QSS 保存到文件里，然后删除 Qt Designer 里的 QSS</li>
+<li>2 从文件读取 QSS 赋值给 QString 变量</li>
+<li>3 用 qApp 加载从文件读取到的 QSS</li>
+</ul>
+<h2 id="我在项目中使用下面的函数来加载-qss">我在项目中使用下面的函数来加载 QSS:</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class UiUtil &#123;</span><br><span class="line">public:</span><br><span class="line">    static void loadQss(); // 为整个应用程序加载 QSS</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;QFile&gt;</span><br><span class="line">#include &lt;QStringList&gt;</span><br><span class="line">#include &lt;QDebug&gt;</span><br><span class="line">#include &lt;QApplication&gt;</span><br><span class="line"></span><br><span class="line">void UiUtil::loadQss() &#123;</span><br><span class="line">    // 从配置中读取 QSS 的文件名，QSS 可以分类放在多个文件里</span><br><span class="line">    QStringList qssFileNames = Singleton&lt;Config&gt;::getInstance().getQssFiles();</span><br><span class="line"></span><br><span class="line">    // 需要把所有文件中的 QSS 合并在一起</span><br><span class="line">    QString qss;</span><br><span class="line"></span><br><span class="line">    foreach (QString name, qssFileNames) &#123;</span><br><span class="line">        qDebug() &lt;&lt; QString(&quot;=&gt; 加载 QSS 文件 %1&quot;).arg(name);</span><br><span class="line"></span><br><span class="line">        QFile file(name);</span><br><span class="line">        if (!file.open(QIODevice::ReadOnly)) &#123;</span><br><span class="line">            qDebug() &lt;&lt; QString(&quot;打开 QSS 文件 %1 失败&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        qss.append(file.readAll()).append(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (!qss.isEmpty()) &#123;</span><br><span class="line">        // qDebug() &lt;&lt; qss;</span><br><span class="line">        qApp-&gt;setStyleSheet(qss);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>UiUtil::loadQss() 可以在运行时多次调用，这样就能在程序运行的时候修改 QSS，然后加载，看到修改后的效果</p>
+</blockquote>
+<p>把下面的代码放到 main() 函数里，当按下快捷键 ctrl + l 后就会加载一次 QSS，实现 QSS 的动态加载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MainWindow mainWindow; // 程序的主窗口</span><br><span class="line">QShortcut *shortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_L), &amp;mainWindow);</span><br><span class="line"></span><br><span class="line">QObject::connect(shortcut, &amp;QShortcut::activated, [] &#123;</span><br><span class="line">    UiUtil::loadQss();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/10/18/QT/qss/%E5%8A%A0%E8%BD%BDQSS/" data-id="cl9y15qfc000pcwtjdilwbowp" data-title="加载QSS" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/18/QT/qss/%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          盒子模型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/18/QT/qss/QSS%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">QSS基础</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 12.5px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 17.5px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/tool_use/markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">markdown数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E6%84%A4%E6%80%92%E7%9A%84%E7%89%9B%E9%A1%BF_%E6%B1%AA%E6%9C%89/">愤怒的牛顿 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E5%85%AB%E5%8D%A6%E5%BE%AE%E7%A7%AF%E5%88%86_%E6%B1%AA%E6%9C%89/">八卦微积分 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/tool_use/blog/Hexo%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo博客支持数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/history/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8E%86%E5%8F%B2(%E4%BA%8C)_%E8%B5%B7%E6%BA%90%E4%B9%8B%E7%89%9B%E9%A1%BF/">微积分的历史(二) 起源之牛顿</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

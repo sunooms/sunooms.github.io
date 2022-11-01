@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>QSS-subcontrol | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="QSS Subcontrol 普通的 QSS 和 CSS 没什么区别，难度不大，但除此之外，想要使用好 QSS，还必须得掌握好 subcontrol，这个在 CSS 里没有，是 Qt 独有的。 什么是 subcontrol？一个复杂的 widget 由多个部分组成，它们可以是一个 widget，也可以是逻辑上的部件，例如 QCheckBox 由 icon 和 text 两个部分组成，不仅可以定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QSS-subcontrol">
+<meta property="og:url" content="https://sunooms.github.io/2022/10/22/QT/qss/QSS_Subcontrol/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="QSS Subcontrol 普通的 QSS 和 CSS 没什么区别，难度不大，但除此之外，想要使用好 QSS，还必须得掌握好 subcontrol，这个在 CSS 里没有，是 Qt 独有的。 什么是 subcontrol？一个复杂的 widget 由多个部分组成，它们可以是一个 widget，也可以是逻辑上的部件，例如 QCheckBox 由 icon 和 text 两个部分组成，不仅可以定">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/hPYidQWNSmXC7af.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/7EWPDFMY4ov3wmT.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/kZGV2WRN7zQyoed.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/pWlcitwoF5jC76O.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/OuHFfgER5DsKz6C.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/JEYDxl6cmvV5Qao.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/Px5HXZSRi4GsfVA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/CTJAcoHPpMQkB2F.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/EVLyBA3tN9KDkdb.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/YFz5RdLI2xjTaNf.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/IfHyVb7UkElqFtC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/noGQ23kZvamDgM6.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/9A75fNS1KQqhacB.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/ZMyCObuT8YP5Uq6.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/8qiMer92Kshja4z.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/B6XcbkhJzfUo7Qu.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/bWTL5EXHqpcrK72.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/m9ly1zcJP2W8ngZ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/QuvZV361g9AWowi.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/dw5F9SrBAmHTzlM.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/uyoIpHPeYJKFmxr.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/PB8IRJnGap5zgM1.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/tDZ8dpoEKOF7nXJ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/wAEBphuDCJFWOYz.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/mNgfvWJ1UrFE3kC.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/eML8gZSClyci9xY.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/QIr4ACkbxEgJuaw.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/OwthLbW3PlKz7ep.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/iKfISvxHRTsGugq.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/ESUkdBxXFOQDYCv.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/Vze4C1g9xYL57op.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/22/iDh3Tx1kaqo5uI8.png">
+<meta property="article:published_time" content="2022-10-22T02:31:04.000Z">
+<meta property="article:modified_time" content="2022-10-27T01:14:50.197Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="QSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/22/hPYidQWNSmXC7af.png">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-QT/qss/QSS_Subcontrol" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/22/QT/qss/QSS_Subcontrol/" class="article-date">
+  <time class="dt-published" datetime="2022-10-22T02:31:04.000Z" itemprop="datePublished">2022-10-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/QT/">QT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      QSS-subcontrol
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="qss-subcontrol">QSS Subcontrol</h1>
+<p>普通的 QSS 和 CSS 没什么区别，难度不大，但除此之外，想要使用好 QSS，还必须得掌握好 subcontrol，这个在 CSS 里没有，是 Qt 独有的。</p>
+<p>什么是 subcontrol？一个复杂的 widget 由多个部分组成，它们可以是一个 widget，也可以是逻辑上的部件，例如 QCheckBox 由 icon 和 text 两个部分组成，不仅可以定义 text 的样式，还可以定义 icon 相关的样式，icon 部分就是 QCheckBox 的 <code>subcontrol ::indicator</code>。</p>
+<p>在 Qt 的帮助文档里有所有 subcontrol 的说明，但是相信很多人看了还是不明白每个 subcontrol 具体是什么，这一节将使用可视化的方式标记出 subcontrol，介绍使用 QSS 自定义有 subcontrol 的常用 widget，这里的重心是怎么去 QSS subcontrol 而不是样式效果，复杂漂亮的界面需要大量的图片和更多的 QSS，这里不作介绍，以免陷入细节，掩盖本节主题。只要知道了原理，结合已经掌握的 QSS，找美工提供一套界面切图，就能很容易实现出来很专业效果了。</p>
+<p>Subcontrol 的 QSS 和大多数 widget 的差不多，也支持盒子模型，可以自定义 color, background, background-color, background-image, border, padding, margin, width, height 等，也支持 Pseudo-States。</p>
+<p>Subcontrol 的绘制位置由 subcontrol-origin、subcontrol-position, top, left 来指定，就先从这几个属性开始入手。</p>
+<h1 id="subcontrol-origin">Subcontrol-Origin</h1>
+<p><code>subcontrol-origin</code> 定义在 parent widget 中绘制 subcontrol 的参考矩形，默认在 padding 的矩形中绘制。</p>
+<blockquote>
+<p>The origin rectangle of the subcontrol within the parent element. If this property is not specified, the default is padding.</p>
+</blockquote>
+<p>subcontrol-origin 有 4 个值可选：</p>
+<ul>
+<li>margin</li>
+<li>border</li>
+<li>padding</li>
+<li>content</li>
+</ul>
+<p>下图展示了 subcontrol-origin 的值不同时，在 parent widget 的不同位置进行绘制 subcontrol：</p>
+<!--![](./images/QSS-Subcontrol-Origin.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/22/hPYidQWNSmXC7af.png" alt="QSS-Subcontrol-Origin.png" /><figcaption aria-hidden="true">QSS-Subcontrol-Origin.png</figcaption>
+</figure>
+<h2 id="subcontrol-position">Subcontrol-Position</h2>
+<p>已经知道 subcontrol 要在 parent widget 的某个矩形区域里绘制，如 padding rectangle，这个矩形这么大，具体要在这个矩形的哪个位置绘制呢？使用 subcontrol-position 来指定，相对于 subcontrol-origin。不同的 subcontrol 的 subcontrol-position 默认值不同，例如 QSlider 的 handle 的默认值是 center center，QSpinBox 的 up-button 的默认值是 right top。</p>
+<blockquote>
+<p>The alignment of the subcontrol within the origin rectangle specified by subcontrol-origin. If this property is not specified, it defaults to a value that depends on the subcontrol.</p>
+</blockquote>
+<p>subcontrol-position 水平方向有 3 个值可选：</p>
+<ul>
+<li>left</li>
+<li>center</li>
+<li>right</li>
+</ul>
+<p>subcontrol-position 垂直方向有 3 个值可选：</p>
+<ul>
+<li>top</li>
+<li>center</li>
+<li>bottom</li>
+</ul>
+<h1 id="用-top-和-left-微调-subcontrol-的位置">用 Top 和 Left 微调 Subcontrol 的位置</h1>
+<p>Top 和 left 的主要作用是 :hover，:pressed 等发生时，用 top 和 left 偏移一点 subcontrol，这样就看到 subcontrol 的鼠标动作了，偏移是相对于 subcontrol-orign 和 subcontrol-position 确定的位置，top 和 left 的默认值是 0</p>
+<p><strong>用下面的 QSS 总结一下 subcontrol-origin, subcontrol-position, top, left：</strong></p>
+<ul>
+<li>QSpinBox 的 up-button 放置在 QSpinBox 的左边垂直居中</li>
+<li>当鼠标放到 up-button 上时，将其向右下角偏移 1px</li>
+<li>当鼠标离开 up-button 后，up-button 移回到原来的位置</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">QSpinBox::up-button &#123;</span><br><span class="line">    subcontrol-origin: margin;</span><br><span class="line">    subcontrol-position: left center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSpinBox::up-button:hover &#123;</span><br><span class="line">    top: 1px;</span><br><span class="line">    left: 1px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来就具体的介绍每一个 Widget 有哪些 subcontrol，怎么 QSS 它们。</p>
+<h1 id="qcheckbox">QCheckBox</h1>
+<p>QCheckBox 的 subcontrol 有 ::indicator，比较有意思的是，text 总是显示在 indicator 右边，所以如果 indicator 靠右边显示的话，text 很可能就看不到了。</p>
+<blockquote>
+<p>QRadioButton 的 QSS 和 QCheckBox 的一样，所以就不在重复介绍。</p>
+</blockquote>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/7EWPDFMY4ov3wmT.png" alt="QSS-Subcontrol-CheckBox.png" /><figcaption aria-hidden="true">QSS-Subcontrol-CheckBox.png</figcaption>
+</figure>
+<p>下面 QSS 的效果如图：</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/kZGV2WRN7zQyoed.png" alt="QSS-Subcontrol-CheckBox-1.png" /><figcaption aria-hidden="true">QSS-Subcontrol-CheckBox-1.png</figcaption>
+</figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">QCheckBox &#123;</span><br><span class="line">    color: lightgray;</span><br><span class="line">    background: rgb(44, 44, 44);</span><br><span class="line">    border: 10px solid rgb(76, 76, 76);</span><br><span class="line">    spacing: 10px; /* indicator 和 text 的间隔 */</span><br><span class="line">    padding: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QCheckBox::indicator &#123;</span><br><span class="line">    subcontrol-origin: border;</span><br><span class="line">    subcontrol-position: left center;</span><br><span class="line">    background: white;</span><br><span class="line">    border: 2px solid rgb(170, 170, 170);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QCheckBox::indicator:checked &#123;</span><br><span class="line">    background: rgb(76, 76, 76);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>修改 subcontrol-origin 和 subcontrol-position 为不同的值看看效果是什么。</p>
+</blockquote>
+<h1 id="qcombobox">QComboBox</h1>
+<p>QComboBox 的 subcontrol 有 drop-down。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/pWlcitwoF5jC76O.png" alt="QSS-Subcontrol-ComboBox.png" /><figcaption aria-hidden="true">QSS-Subcontrol-ComboBox.png</figcaption>
+</figure>
+<p>下面 QSS 的效果如图： <img src="https://s2.loli.net/2022/10/22/OuHFfgER5DsKz6C.png" alt="QSS-Subcontrol-ComboBox-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">QComboBox &#123;</span><br><span class="line">    color: lightgray;</span><br><span class="line">    background: rgb(44, 44, 44);</span><br><span class="line">    border: 10px solid rgb(76, 76, 76);</span><br><span class="line">    spacing: 10px; /* indicator 和 text 的间隔 */</span><br><span class="line">    padding: 10px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QComboBox::drop-down &#123;</span><br><span class="line">    width: 15px;</span><br><span class="line">    height: 10px;</span><br><span class="line">    subcontrol-origin: border;</span><br><span class="line">    subcontrol-position: right center;</span><br><span class="line">    background: white;</span><br><span class="line">    border: 2px solid rgb(170, 170, 170);</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QComboBox::drop-down:hover &#123;</span><br><span class="line">    background: rgb(76, 76, 76);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QComboBox::drop-down:on &#123;</span><br><span class="line">    background: black;</span><br><span class="line">    top: 1px;</span><br><span class="line">    left: 1px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="qspinbox-qdateedit-qtimeedit-qdatetimeedit">QSpinBox, QDateEdit, QTimeEdit, QDateTimeEdit</h1>
+<p>QSpinBox 的 subcontrol 有 <code>::up-button</code>, <code>::down-button</code>, <code>::up-arrow</code>, <code>::down-arrow</code>。</p>
+<ul>
+<li>up-button 显示在 QSpinBox 里，它的 subcontrol-origin 是相对于 QComboBox 的</li>
+<li>down-button 显示在 QSpinBox 里，它的 subcontrol-origin 是相对于 QComboBox 的</li>
+<li>up-arrow 显示在 up-button 里，它的 subcontrol-origin 是相对于 up-button 的</li>
+<li>down-arrwo 显示在 down-button 里，它的 subcontrol-origin 是相对于 down-button 的</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/JEYDxl6cmvV5Qao.png" alt="QSS-Subcontrol-SpinBox.png" /><figcaption aria-hidden="true">QSS-Subcontrol-SpinBox.png</figcaption>
+</figure>
+<blockquote>
+<p>QDateEdit, QTimeEdit, QDateTimeEdit 的 subcontrol 和 QSpinBox 是一样的，只需要把下面 QSS 里的 QSpinBox 换成 QDateEdit，QTimeEdit 或 QDateTimeEdit 即可。</p>
+</blockquote>
+<p>下面 QSS 的效果如图，down-button 靠左垂直居中，up-button 靠右垂直居中： <img src="https://s2.loli.net/2022/10/22/Px5HXZSRi4GsfVA.png" alt="QSS-Subcontrol-SpinBox-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">QSpinBox &#123;</span><br><span class="line">    color: lightgray;</span><br><span class="line">    background: rgb(44, 44, 44);</span><br><span class="line">    border: 10px solid rgb(76, 76, 76);</span><br><span class="line">    padding: 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSpinBox::down-button, QSpinBox::up-button &#123;</span><br><span class="line">    subcontrol-origin: border;</span><br><span class="line">    width: 16px;</span><br><span class="line">    height: 10px;</span><br><span class="line">    background: white;</span><br><span class="line">    border: 2px solid rgb(170, 170, 170);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSpinBox::down-button &#123;</span><br><span class="line">    subcontrol-position: center left;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSpinBox::up-button &#123;</span><br><span class="line">    subcontrol-position: center right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSpinBox::up-arrow,  QSpinBox::down-arrow &#123;</span><br><span class="line">    subcontrol-origin: content;</span><br><span class="line">    subcontrol-position: center center;</span><br><span class="line">    width: 6px;</span><br><span class="line">    height: 6px;</span><br><span class="line">    background: rgb(76, 76, 76);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="qslider">QSlider</h1>
+<p>QSlider 的 subcontrol 有 <code>::groove（槽）</code>，<code>::handle</code>，<code>::add-page</code> 和 <code>::sub-page</code>。</p>
+<ul>
+<li>groove 显示在 QSlider 里，它的 subcontrol-origin 是相对于 QSlider 的</li>
+<li>handle 显示在 groove 里，它的 subcontrol-origin 是相对于 groove 的</li>
+<li>sub-page 显示在 groove 里，它的 subcontrol-origin 是相对于 groove 的</li>
+<li>add-page 显示在 groove 里，它的 subcontrol-origin 是相对于 groove 的</li>
+<li>handle, sub-page, add-page 虽然都显示在 groove 里，但是都可以把它们扩展到 groove 外</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/CTJAcoHPpMQkB2F.png" alt="QSS-Subcontrol-Slider.png" /><figcaption aria-hidden="true">QSS-Subcontrol-Slider.png</figcaption>
+</figure>
+<p>下面 QSS 的效果如图： <img src="https://s2.loli.net/2022/10/22/EVLyBA3tN9KDkdb.png" alt="QSS-Subcontrol-Slider-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">QSlider &#123;</span><br><span class="line">    background: rgb(170, 170, 170);</span><br><span class="line">    padding: 2px;</span><br><span class="line">    height: 40px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSlider::groove:horizontal &#123;</span><br><span class="line">    subcontrol-origin: content;</span><br><span class="line">    background: rgb(76, 76, 76);</span><br><span class="line"></span><br><span class="line">    /* the groove expands to the size of the slider by default.</span><br><span class="line">    by giving it a height, it has a fixed size */</span><br><span class="line">    height: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSlider::handle:horizontal &#123;</span><br><span class="line">    background-color: rgb(50, 50, 50);</span><br><span class="line">    width: 40px;</span><br><span class="line">    border-radius: 20px;</span><br><span class="line"></span><br><span class="line">    /* handle is placed by default on the contents rect of the groove.</span><br><span class="line">    Expand outside the groove */</span><br><span class="line">    margin: -10px 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSlider::sub-page:horizontal &#123;</span><br><span class="line">    background: #999;</span><br><span class="line">    margin: 5px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QSlider::add-page:horizontal &#123;</span><br><span class="line">    background: #666;</span><br><span class="line">    margin: 5px;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Groove 的默认高度和 QSlider content rectangle 的高度一样，给它一个高度值就可以让他有固定的高度了，把 groove 的 height 去掉试试。</p>
+<p>Handle 的默认高度和 groove content rectangle 的高度一样，为了让起显示超出 groove，需要设置 margin 为负值，如果这个负值太小，显示超出 QSlider 的部分将看不到。Handle 的 subcontrol-position 没有作用，因为 handle 不是固定在一个地方的，而是根据 QSlider 的值动态计算显示的位置。</p>
+<h1 id="qprogressbar">QProgressBar</h1>
+<p>QProgressBar 的 subcontrol 有 <code>::chunk</code>。</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/YFz5RdLI2xjTaNf.png" alt="QSS-Subcontrol-ProgressBar.png" /><figcaption aria-hidden="true">QSS-Subcontrol-ProgressBar.png</figcaption>
+</figure>
+<p>对于 QProgressBar 的 QSS，大多数都是想把 chunk 定义为圆角矩形的样子，但是当它的 value 比较小时，chunk 的圆角会变成直角，即使使用图片都不行，效果很不理想，所以如果要修改 QProgressBar 的外观的话，推荐继承 QProgressBar 自己绘制或者使用 QStyle。</p>
+<h1 id="qgroupbox">QGroupBox</h1>
+<p>QGroupBox 的 subcontrol 有 <code>::title</code> 和 <code>::indicator</code>。</p>
+<ul>
+<li>title 相对于 QGroupBox</li>
+<li>indicator 的 subcontrol-origin 和 subcontrol-position 自定义无效</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/IfHyVb7UkElqFtC.png" alt="QSS-Subcontrol-GroupBox.png" /><figcaption aria-hidden="true">QSS-Subcontrol-GroupBox.png</figcaption>
+</figure>
+<p>下面 QSS 的效果如图： <img src="https://s2.loli.net/2022/10/22/noGQ23kZvamDgM6.png" alt="QSS-Subcontrol-GroupBox-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">QGroupBox &#123;</span><br><span class="line">    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                      stop: 0 #E0E0E0, stop: 1 #EEEEEE);</span><br><span class="line">    border: 2px solid gray;</span><br><span class="line">    border-radius: 5px;</span><br><span class="line">    margin-top: 10px; /* leave space at the top for the title */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QGroupBox::title &#123;</span><br><span class="line">    subcontrol-origin: margin;</span><br><span class="line">    subcontrol-position: top center; /* position at the top center */</span><br><span class="line">    padding: 2px 3px;</span><br><span class="line">    color: white;</span><br><span class="line">    margin-top: 2px;</span><br><span class="line">    background-color: gray;</span><br><span class="line">    border-radius: 3px;</span><br><span class="line">    spacing: 5px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QGroupBox::indicator &#123;</span><br><span class="line">    width: 13px;</span><br><span class="line">    height: 13px;</span><br><span class="line">    border: 1px solid black;</span><br><span class="line">    background: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QGroupBox::indicator:checked &#123;</span><br><span class="line">    background: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="qtableview">QTableView</h1>
+<p>QTableView 相关的 subcontrol 有 QTableView 的 <code>::item</code>，QHeaderView 的 <code>::section</code> 和 左上角的 QTableCornerButton 的 <code>::section</code>。</p>
+<blockquote>
+<p>QTableView 的 QSS 对于 QTableWidget 也是生效的。</p>
+</blockquote>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/9A75fNS1KQqhacB.png" alt="QSS-Subcontrol-TableView.png" /><figcaption aria-hidden="true">QSS-Subcontrol-TableView.png</figcaption>
+</figure>
+<p>下面 QSS 的效果如图： <img src="https://s2.loli.net/2022/10/22/ZMyCObuT8YP5Uq6.png" alt="QSS-Subcontrol-TableView-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">QTableView, QHeaderView, QTableView::item &#123;</span><br><span class="line">	background: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTableView::item:alternate &#123;</span><br><span class="line">    background: rgb(209, 231, 254);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTableView::item:selected &#123; /*被选中的index*/</span><br><span class="line">    color: black;</span><br><span class="line">    background: qlineargradient(</span><br><span class="line">        x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">        stop: 0 #FAFBFE,</span><br><span class="line">        stop: 1 #DCDEF1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QHeaderView::section:horizontal, QTableCornerButton::section &#123;</span><br><span class="line">    background-color: qlineargradient(spread:reflect,</span><br><span class="line">        x1:0, y1:0, x2:0, y2:1,</span><br><span class="line">        stop:0 rgba(255, 255, 255, 255),</span><br><span class="line">        stop:1 rgba(164, 164, 164, 255));</span><br><span class="line">	border: 1px solid rgb(153, 153, 153);</span><br><span class="line">    border-width: 0 1px 1px 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QHeaderView::section:vertical &#123;</span><br><span class="line">	background: #DDD;</span><br><span class="line">	border: 1px solid rgb(153, 153, 153);</span><br><span class="line">    border-width: 0 1px 1px 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意: QTableView::item 设置 padding, margin 没有的效果。</p>
+</blockquote>
+<h1 id="qtreeview">QTreeView</h1>
+<p>QTreeView 相关的 subcontrol 有 <code>QHeaderView::section</code>（和上面 QTableView 的 header view 的 QSS 一样，其实就是一个东西），<code>QTreeView::item</code> 和 <code>QTreeView::branch</code>。</p>
+<blockquote>
+<p>QTreeView 的 QSS 对于 QTreeWidget 也是生效的。</p>
+</blockquote>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/8qiMer92Kshja4z.png" alt="QSS-Subcontrol-TreeView.png" /><figcaption aria-hidden="true">QSS-Subcontrol-TreeView.png</figcaption>
+</figure>
+<p>QTreeView 的 subcontrol 并不多，但是 branch 有很多种不同的状态，关键就是理解这些状态，不同状态时使用不同的背景，下面 QSS 的效果如图： <img src="https://s2.loli.net/2022/10/22/B6XcbkhJzfUo7Qu.png" alt="QSS-Subcontrol-TreeView-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">QHeaderView::section:horizontal &#123;</span><br><span class="line">    background-color: qlineargradient(spread:reflect,</span><br><span class="line">        x1:0, y1:0, x2:0, y2:1,</span><br><span class="line">        stop:0 rgba(255, 255, 255, 255),</span><br><span class="line">        stop:1 rgba(164, 164, 164, 255));</span><br><span class="line">    border: 1px solid rgb(153, 153, 153);</span><br><span class="line">    border-width: 0 1px 1px 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::item &#123;</span><br><span class="line">    border-bottom: 1px solid lightgray;</span><br><span class="line">    selection-color: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::item:selected &#123; /*被选中的index*/</span><br><span class="line">    background: qlineargradient(</span><br><span class="line">        x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">        stop: 0 #FAFBFE,</span><br><span class="line">        stop: 1 #DCDEF1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch &#123;</span><br><span class="line">        background: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:has-siblings:!adjoins-item &#123;</span><br><span class="line">        background: cyan;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:has-siblings:adjoins-item &#123;</span><br><span class="line">        background: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:!has-children:!has-siblings:adjoins-item &#123;</span><br><span class="line">        background: blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:closed:has-children:has-siblings &#123;</span><br><span class="line">        background: black;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:has-children:!has-siblings:closed &#123;</span><br><span class="line">        background: gray;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:open:has-children:has-siblings &#123;</span><br><span class="line">        background: magenta;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTreeView::branch:open:has-children:!has-siblings &#123;</span><br><span class="line">        background: green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>哦，哦，哦……，这一堆 QSS 是不是很熟悉，好像在哪里看到过？那就对了，说明你看书不少，吼吼，就是来源于 Qt 的帮助文档。上面的 QSS 是不实用的，直接这么用到项目里，肯定被咔嚓，但是把各种状态的 branch 标记为不同的颜色，这样在做设计的时候就能很容易的分辨出各种 branch，然后根据需求设计出不同的图片放到对应的 branch。其实 Qt 的帮助文档里对 QTreeView 的 QSS 已经有一个很完善的例子，在 QtCreator 的帮助里搜索 <code>style sheets examples</code>，定位到 <code>Customizing QTreeView</code> 就可以看到这个例子了，开发的时候，照葫芦画瓢的做就可以了：</p>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/bWTL5EXHqpcrK72.png" alt="QSS-Subcontrol-TreeView-2.png" /><figcaption aria-hidden="true">QSS-Subcontrol-TreeView-2.png</figcaption>
+</figure>
+<h1 id="qtabwidget">QTabWidget</h1>
+<p>QTabWidget 相关的 subcontrol 有：</p>
+<ul>
+<li>QTabWidget::pane</li>
+<li>QTabWidget::tab-bar</li>
+<li>QTabBar::tab</li>
+<li>QTabBar::close-button</li>
+<li>QTabBar::tear</li>
+<li>QTabBar::scroller</li>
+<li>QTabBar QToolButton::left-arrow</li>
+<li>QTabBar QToolButton::right-arrow</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/m9ly1zcJP2W8ngZ.png" alt="QSS-Subcontrol-TabWidget.png" /><figcaption aria-hidden="true">QSS-Subcontrol-TabWidget.png</figcaption>
+</figure>
+<p>不幸的是，在我看来，QTabWidget 还有一些 bug，例如：</p>
+<ul>
+<li>QTabBar::close-button 只能定位在 tab 的左边或者右边，不能调整和文本之间的间隔</li>
+<li>Tab 互相遮盖的情况下，如我们的例子的样式，拖动 tab 时某些 tab 会被截断</li>
+<li>QTabBar::scroller 的定位也是个问题，不能自由定位到需要的位置</li>
+<li>QTabBar 和 QTabWidget 不一样宽</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/QuvZV361g9AWowi.png" alt="QSS-Subcontrol-TabWidget-2.png" /><figcaption aria-hidden="true">QSS-Subcontrol-TabWidget-2.png</figcaption>
+</figure>
+<p>上图是 SublimeText 的截图，很多应用中的 tab widget 也差不多是上面这个样，至少这几个 bug 决定了 QTabWidget 使用 QSS 我还做不到这么好，其实用性大受限制，所以就不对 QTabWidget 做太多介绍，只给出一个小例子，展示一下简单的定制 QTabWidget，满足一般的需求，复杂的需要我们自己实现一个 tab widget。</p>
+<p>下面 QSS 的效果如图： <img src="https://s2.loli.net/2022/10/22/dw5F9SrBAmHTzlM.png" alt="QSS-Subcontrol-TabWidget-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">QTabWidget::pane &#123; /* The tab widget frame */</span><br><span class="line">    border: 2px solid rgb(69, 69, 69);</span><br><span class="line">    margin-top: -2px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTabWidget::tab-bar &#123;</span><br><span class="line">    left: 5px; /* move to the right by 5px */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTabBar::tab &#123;</span><br><span class="line">    color: gray;</span><br><span class="line">    min-width: 40px;</span><br><span class="line">    height: 28px;</span><br><span class="line">    border-width: 0 18px 0 18px;</span><br><span class="line">    border-image: url(:/img/tab-inactive.png) 0 18 0 18 stretch stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTabBar::tab:selected &#123;</span><br><span class="line">    color: #DDD;</span><br><span class="line">    height: 28px;</span><br><span class="line">    border-width: 0 18px 0 18px;</span><br><span class="line">    border-image: url(:/img/tab-active.png) 0 18 0 18 stretch stretch;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTabBar::tab:!first &#123;</span><br><span class="line">    margin-left: -20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QTabBar::tab:hover &#123;</span><br><span class="line">    color: #DDD;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">tab-active.png</th>
+<th style="text-align: left;">tab-inactive.png</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><img src="https://s2.loli.net/2022/10/22/uyoIpHPeYJKFmxr.png" alt="tab-active.png" /></td>
+<td style="text-align: left;"><img src="https://s2.loli.net/2022/10/22/PB8IRJnGap5zgM1.png" alt="tab-inactive.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>QTabWidget 的关闭按钮可如下定义样式:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">QTabBar::close-button &#123;</span><br><span class="line">    image: url(close.png);</span><br><span class="line">    subcontrol-position: left;</span><br><span class="line">&#125;</span><br><span class="line">QTabBar::close-button:hover &#123;</span><br><span class="line">    image: url(close-hover.png)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="qscrollbar">QScrollBar</h1>
+<p>QScrollBar 相关的 subcontrol 挺多的，仔细观察的话，有点像 QSpinBox 和 QSlider 的合体：</p>
+<ul>
+<li>::sub-line, ::add-line</li>
+<li>::sub-page, ::add-page</li>
+<li>::up-arrow, ::down-arrow</li>
+<li>::left-arrow, ::right-arrow</li>
+</ul>
+<figure>
+<img src="https://s2.loli.net/2022/10/22/tDZ8dpoEKOF7nXJ.png" alt="QSS-Subcontrol-ScrollBar.png" /><figcaption aria-hidden="true">QSS-Subcontrol-ScrollBar.png</figcaption>
+</figure>
+<p>很多时候并不是每一个 subcontrol 都需要处理的，例如下面的 QSS 中，arrow 没有处理，直接绘制在 ::sub-line 和 ::add-line 的背景里，也没有处理 ::sub-page 和 ::add-page，效果如图： <img src="https://s2.loli.net/2022/10/22/wAEBphuDCJFWOYz.png" alt="QSS-Subcontrol-ScrollBar-1.png" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">QScrollBar:horizontal &#123;</span><br><span class="line">    height: 16px;</span><br><span class="line">    border-width: 0px 10px 0px 10px;</span><br><span class="line">    border-image: url(:/img/horizontal-track.png) 0 10 0 10 repeat stretch;</span><br><span class="line">    margin-left: 6px;</span><br><span class="line">    margin-right: 16px;</span><br><span class="line">    padding-right: 4px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar::handle:horizontal &#123;</span><br><span class="line">    min-width: 40px;</span><br><span class="line">    border-width: 0 17px 0 17px;</span><br><span class="line">    border-image: url(:/img/horizontal-handle.png) 0 17 0 17 repeat repeat;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar::sub-line:horizontal &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 17px;</span><br><span class="line">    subcontrol-position: left;</span><br><span class="line">    subcontrol-origin: margin;</span><br><span class="line">    background-image: url(:/img/horizontal-sub-line.png)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar::add-line:horizontal &#123;</span><br><span class="line">    width: 20px;</span><br><span class="line">    height: 17px;</span><br><span class="line">    subcontrol-position: right;</span><br><span class="line">    subcontrol-origin: border;</span><br><span class="line">    background-image: url(:/img/horizontal-add-line.png)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar:vertical &#123;</span><br><span class="line">    width: 16px;</span><br><span class="line">    border-width: 10px 0px 10px 0px;</span><br><span class="line">    border-image: url(:/img/vertical-track.png) 10 0 10 0 repeat repeat;</span><br><span class="line">    margin-top: 6px;</span><br><span class="line">    margin-bottom: 16px;</span><br><span class="line">    padding-bottom: 6px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar::handle:vertical &#123;</span><br><span class="line">    min-height: 40px;</span><br><span class="line">    border-width: 17px 0px 17px 0px;</span><br><span class="line">    border-image: url(:/img/vertical-handle.png) 17 0 17 0 repeat repeat;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar::sub-line:vertical &#123;</span><br><span class="line">    width: 17px;</span><br><span class="line">    height: 22px;</span><br><span class="line">    subcontrol-position: top left;</span><br><span class="line">    subcontrol-origin: margin;</span><br><span class="line">    background-image: url(:/img/vertical-sub-line.png)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">QScrollBar::add-line:vertical &#123;</span><br><span class="line">    width: 17px;</span><br><span class="line">    height: 22px;</span><br><span class="line">    subcontrol-position: bottom;</span><br><span class="line">    subcontrol-origin: border;</span><br><span class="line">    background-image: url(:/img/vertical-add-line.png)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>QTableView 的 QSS 这里没有给出，请参考上面 QTableView 的 subcontrol 的内容。</p>
+</blockquote>
+<p>QScrollBar 使用的背景图：</p>
+<p><img src="https://s2.loli.net/2022/10/22/mNgfvWJ1UrFE3kC.png" alt="horizontal-add-line.png" /> <img src="https://s2.loli.net/2022/10/22/eML8gZSClyci9xY.png" alt="horizontal-sub-line.png" /> <img src="https://s2.loli.net/2022/10/22/QIr4ACkbxEgJuaw.png" alt="horizontal-handle.png" /> <img src="https://s2.loli.net/2022/10/22/OwthLbW3PlKz7ep.png" alt="horizontal-track.png" /> <img src="https://s2.loli.net/2022/10/22/iKfISvxHRTsGugq.png" alt="vertical-add-line.png" /> <img src="https://s2.loli.net/2022/10/22/ESUkdBxXFOQDYCv.png" alt="vertical-sub-line.png" /> <img src="https://s2.loli.net/2022/10/22/Vze4C1g9xYL57op.png" alt="vertical-handle.png" /> <img src="https://s2.loli.net/2022/10/22/iDh3Tx1kaqo5uI8.png" alt="vertical-track.png" /></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/10/22/QT/qss/QSS_Subcontrol/" data-id="cl9y15qf60006cwtjfki1f5ac" data-title="QSS-subcontrol" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/22/QT/qss/QSS_QCalendatWidget/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          QSS QCalendatWidget
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/19/tool_use/blog/%E5%9B%BE%E5%BA%8A%E4%BB%8B%E7%BB%8D/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">在线图床介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 12.5px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 17.5px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/tool_use/markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">markdown数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E6%84%A4%E6%80%92%E7%9A%84%E7%89%9B%E9%A1%BF_%E6%B1%AA%E6%9C%89/">愤怒的牛顿 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E5%85%AB%E5%8D%A6%E5%BE%AE%E7%A7%AF%E5%88%86_%E6%B1%AA%E6%9C%89/">八卦微积分 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/tool_use/blog/Hexo%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo博客支持数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/history/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8E%86%E5%8F%B2(%E4%BA%8C)_%E8%B5%B7%E6%BA%90%E4%B9%8B%E7%89%9B%E9%A1%BF/">微积分的历史(二) 起源之牛顿</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>QSS基础 | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="QSS 基础 如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。 1234567891011121314151617181920212223242526272829QLab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QSS基础">
+<meta property="og:url" content="https://sunooms.github.io/2022/10/18/QT/qss/QSS%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="QSS 基础 如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。 1234567891011121314151617181920212223242526272829QLab">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/OSYxuzw7poBmKIH.png">
+<meta property="og:image" content="https://s2.loli.net/2022/10/19/7aLikNojgbxwBc6.png">
+<meta property="article:published_time" content="2022-10-18T02:30:00.000Z">
+<meta property="article:modified_time" content="2022-10-27T01:14:50.197Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="QSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/10/19/OSYxuzw7poBmKIH.png">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-QT/qss/QSS基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/18/QT/qss/QSS%E5%9F%BA%E7%A1%80/" class="article-date">
+  <time class="dt-published" datetime="2022-10-18T02:30:00.000Z" itemprop="datePublished">2022-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/QT/">QT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      QSS基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="qss-基础">QSS 基础</h1>
+<p>如果你会 CSS，那么 QSS 对你来说将会非常简单，QSS 的语法和 CSS 的愈发非常相似，但也有些不同，有些 CSS 的东西在 QSS 里被去掉了，QSS 也加了些自己特有的东西，不过大多数还是差不多的，下面以修改 QLabel 的样式为例，学习 QSS 的基础语法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">QLabel &#123;</span><br><span class="line">    /* 相当于 font: bold 50px &quot;Snell Roundhand&quot;; */</span><br><span class="line">    font-size: 50px;</span><br><span class="line">    font-weight: bold;</span><br><span class="line">    font-family: &quot;Snell Roundhand&quot;;</span><br><span class="line"></span><br><span class="line">    /* 文本的颜色 */</span><br><span class="line">    color: white;</span><br><span class="line"></span><br><span class="line">    /* 相当于 background: lightgray url(:/resources/horizontal-add-line.png); */</span><br><span class="line"></span><br><span class="line">    background-color: lightgray;</span><br><span class="line">    background-image: url(:/resources/horizontal-add-line.png);</span><br><span class="line"></span><br><span class="line">    /* 还能使用渐变 */</span><br><span class="line">    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                      stop: 0 #FFFFFF, stop: 1 #BB000000);</span><br><span class="line"></span><br><span class="line">    /* 相当于 border: 5px solid gray; */</span><br><span class="line">    border-width: 5px;</span><br><span class="line">    border-color: gray;</span><br><span class="line">    border-style: solid;</span><br><span class="line"></span><br><span class="line">    /* 边框圆角 */</span><br><span class="line">    border-radius: 10px;</span><br><span class="line"></span><br><span class="line">    padding: 5px;</span><br><span class="line">    margin: 10px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下图是上面 QSS 的效果图:</p>
+<!--![gitee](https://gitee.com/akebee/images/blob/master/qt/qss/QSS-Base-1.png) -->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/OSYxuzw7poBmKIH.png" alt="QSS-Base-1.png" /><figcaption aria-hidden="true">QSS-Base-1.png</figcaption>
+</figure>
+<h1 id="下面具体介绍一下-qss-的基础语法">下面具体介绍一下 QSS 的基础语法</h1>
+<ul>
+<li>设置字体用<code>font</code>, 语法为：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">font: [font-style] [font-variant] [font-weight] [font-size] [font-family]</span><br><span class="line"></span><br><span class="line">/* 按顺序设置，可以忽略其中某些值，例如：*/</span><br><span class="line">font: italic bold 12px arial, sans-serif;</span><br></pre></td></tr></table></figure>
+<p>设置字体用 <code>font-style</code>, <code>font-size</code>, <code>font-weight</code>, <code>font-family</code>（和 CSS 一样，如果字体名字有空格则用双引号引起来，多个字体名字间用逗号分隔，如果第一个字体找不到则用第二个，第二个找不到则用第三个，依此类推）</p>
+<ul>
+<li>设置文本颜色用 <code>color</code></li>
+<li>设置背景颜色用 <code>background-color</code></li>
+<li>设置背景使用 <code>background</code>，可以设置如下属性：
+<ul>
+<li><code>background-color</code></li>
+<li><code>background-position</code></li>
+<li><del><code>background-size</code></del></li>
+<li><code>background-repeat</code></li>
+<li><code>background-origin</code></li>
+<li><code>background-clip</code></li>
+<li><code>background-attachment</code></li>
+<li><code>background-image</code> <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/* 可以忽略其中某些值，例如：*/</span><br><span class="line">background: lightgray url(:/resources/horizontal-add-line.png);</span><br></pre></td></tr></table></figure></li>
+<li>url 中的路径可以是：
+<ul>
+<li>资源文件的路径（<code>:/</code> 开头）</li>
+<li>绝对路径</li>
+<li>相对于可执行文件的相对路径</li>
+</ul></li>
+</ul></li>
+<li>设置背景图片用 <code>background-image</code>（先绘制背景色，然后再绘制背景图片，如果背景图片是半透明的就可以看到背景色了），默认水平和垂直重复平铺满整个 widget，同时一起设置的还可以有 <code>background-repeat</code>、<code>background-position</code>、<code>background-attachment</code>
+<ul>
+<li>background-repeat，可选的值有：
+<ul>
+<li>repeat-x：水平方向重复</li>
+<li>repeat-y：垂直方向重复</li>
+<li>no-repeat：不重复</li>
+</ul></li>
+<li>background-position，可选的值有：
+<ul>
+<li>top left</li>
+<li>top center</li>
+<li>top right</li>
+<li>center left</li>
+<li>center center</li>
+<li>center right</li>
+<li>bottom left</li>
+<li>bottom center</li>
+<li>bottom right</li>
+<li><del>xpos ypos</del></li>
+</ul></li>
+<li>background-attachment，可选的值有：
+<ul>
+<li>scroll：背景随滚动条滚动</li>
+<li>fixed：背景不随滚动条滚动</li>
+</ul></li>
+</ul></li>
+<li>设置背景还可以用 <code>border-image</code>，请参考 <a href=""><code>Border Image</code></a> 一节</li>
+<li>设置边框用 <code>border-width</code>, <code>border-style</code>, <code>border-color</code></li>
+<li>设置边框用 border，语法为：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">border: border-width border-style border-color</span><br><span class="line"></span><br><span class="line">/* 例如：*/</span><br><span class="line">border: 1px solid gray;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置圆角边框用 <code>border-radius</code>，但是如果给定的半径大于对应边的一半，圆角就没有效果了，在 CSS 里没有这个问题</li>
+<li>支持渐变 <code>gradient</code>: <code>qlineargradient</code>、<code>qradialgradient</code>、<code>qconicalgradient</code>，渐变的坐标不是用像素表示，而是把渐变的坐标的最小值定义为 0，最大值定义为 1，这种技术又叫 <code>Normalization</code>，通俗点说就是用比例表示，开始处用 0 表示，结束处用 1 表示，不管渐变的范围是 200px 还是 500px，按比例都能计算出实际的像素坐标，这样做的好处是，不需要关心渐变的像素坐标范围的具体数值。如果不用 <code>Normalization</code> 技术，widget 的大小一变化，就需要修改 QSS 里的坐标值。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">x1: 0, y1: 0，渐变的开始位置，为 border rectangle 的左上角（请参考盒子模型）</span><br><span class="line">x2: 0, y2: 1，渐变的开始位置，为 border rectangle 的左下角</span><br><span class="line">stop: 0.1 #FF0000，在 0.0 处渐变的颜色为 #FF0000</span><br><span class="line">stop: 0.6 #00FF00，在 0.6 处渐变的颜色为 #00FF00</span><br><span class="line">stop: 1.0 #0000FF，在 1.0 处渐变的颜色为 #0000FF</span><br><span class="line">*/</span><br><span class="line">background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,</span><br><span class="line">                        stop: 0.1 #FF0000,</span><br><span class="line">                        stop: 0.6 #00FF00,</span><br><span class="line">                        stop: 1.0 #0000FF);</span><br></pre></td></tr></table></figure>
+<p>渐变效果比较复杂，可以使用 Qt Desginer 的 QSS 编辑器来帮助我们可视化的实现复杂的渐变效果，如下图:</p>
+<!--![](./images/QSS-Base-2.png)-->
+<figure>
+<img src="https://s2.loli.net/2022/10/19/7aLikNojgbxwBc6.png" alt="QSS-Base-2.png" /><figcaption aria-hidden="true">QSS-Base-2.png</figcaption>
+</figure>
+<ul>
+<li><code>Padding</code> 和 <code>margin</code> 参考<a href="">盒子模型</a>一节</li>
+<li>设置图标，如 QToolButton 的图标：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/* 图标大小 */</span><br><span class="line">icon-size: 20px 20px;</span><br><span class="line"></span><br><span class="line">/* 图标文件 */</span><br><span class="line">qproperty-icon: url(:/resources/tabset-left.png);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置宽度用 <code>width</code>，高度用 <code>height</code>，设置 <code>subcontrol</code> 的时候比较有用</li>
+<li>设置最小宽度用 <code>min-width</code>，最小高度用 <code>min-height</code>（是 content rectangle 的宽和高）</li>
+<li>设置最大宽度用 <code>max-width</code>，最大高度用 <code>max-height</code></li>
+<li>遗憾的是，QSS 不支持阴影</li>
+<li>使用 <code>qproperty-xxx</code> 进行设置，因为在 QWidget 及其子类中使用宏 Q_PROPERTY 定义的 WRITE 函数可以在 QSS 中访问：
+<ul>
+<li><code>text-align</code> 不支持 QLable，但设置 QLabel 的文本居中可以这样：<code>qproperty-alignment: AlignCenter</code></li>
+<li>甚至可以在 QSS 中设置 QLabel，QPushButton 等的文本：<code>qproperty-text: 'It is amazing'</code>，太魔性了</li>
+<li>设置 QLabel 的 word wrap: <code>qproperty-wordWrap: true</code></li>
+<li>设置对齐方式：
+<ul>
+<li><code>qproperty-alignment: 'AlignCenter's</code></li>
+<li><code>qproperty-alignment: 'AlignBottom | AlignRight'</code></li>
+</ul></li>
+<li>设置按钮:
+<ul>
+<li>设置 flat: <code>qproperty-flat: true</code></li>
+<li>设置图标: <code>qproperty-icon: url(:/resources/tabset-left.png)</code></li>
+</ul></li>
+<li>QWidget 及其子类还有很多 Q_PROPERTY 定义的 WRITE 函数，想知道就去查帮助文档吧</li>
+<li>我们也可以使用宏 Q_PROPERTY 定义自己的 WRITE 函数，然后在 QSS 中使用</li>
+<li>不过 <code>qproperty-xxx</code> 也不是万能的，在 <code>:hover</code>, <code>:pressed</code> 等伪类选择器中不生效</li>
+</ul></li>
+</ul>
+<p>上面的 QSS 的虽然只是基础，但是很重要，大多数的时候都要用到它们，用来修改 QLabel，QPushButton，QFrame，QWidget 等的样式还基本够用了，不过如果要修改复杂一点的 widget 的样式，如 QSpinBox，QScrollBar 等，上面的知识是不够的，要想掌握好 QSS，还必须了解 <a href=""><code>QSS 的选择器</code></a>，<a href=""><code>盒子模型</code></a>，<a href=""><code>Border-Image</code></a>，<a href=""><code>Subcontrol</code></a> 等，这些在后面都有专门的章节介绍。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/10/18/QT/qss/QSS%E5%9F%BA%E7%A1%80/" data-id="cl9y15qf8000bcwtjhm1a7t6k" data-title="QSS基础" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/18/QT/qss/%E5%8A%A0%E8%BD%BDQSS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          加载QSS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/18/QT/qss/Qt_Style_Sheet(QSS)%E6%80%BB%E4%BD%93%E6%8F%8F%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Qt Style Sheet (QSS) 总体描述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 12.5px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 17.5px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/tool_use/markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">markdown数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E6%84%A4%E6%80%92%E7%9A%84%E7%89%9B%E9%A1%BF_%E6%B1%AA%E6%9C%89/">愤怒的牛顿 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E5%85%AB%E5%8D%A6%E5%BE%AE%E7%A7%AF%E5%88%86_%E6%B1%AA%E6%9C%89/">八卦微积分 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/tool_use/blog/Hexo%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo博客支持数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/history/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8E%86%E5%8F%B2(%E4%BA%8C)_%E8%B5%B7%E6%BA%90%E4%B9%8B%E7%89%9B%E9%A1%BF/">微积分的历史(二) 起源之牛顿</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

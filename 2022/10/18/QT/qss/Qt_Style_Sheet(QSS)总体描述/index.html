@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Qt Style Sheet (QSS) 总体描述 | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="QSS 总体描述 Qt 提供的 widget 的默认外观很多时候都不符合项目的界面需求，必须要改，修改一个 widget 的外观（Look and Feel）有以下的方法：  继承 Widget，然后在 paintEvent() 里绘制 继承 QStyle 使用 QSS（Qt Style Sheet） 对于 item view 来说还有一种方式，还可以使用 Delegate  这几">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt Style Sheet (QSS) 总体描述">
+<meta property="og:url" content="https://sunooms.github.io/2022/10/18/QT/qss/Qt_Style_Sheet(QSS)%E6%80%BB%E4%BD%93%E6%8F%8F%E8%BF%B0/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="QSS 总体描述 Qt 提供的 widget 的默认外观很多时候都不符合项目的界面需求，必须要改，修改一个 widget 的外观（Look and Feel）有以下的方法：  继承 Widget，然后在 paintEvent() 里绘制 继承 QStyle 使用 QSS（Qt Style Sheet） 对于 item view 来说还有一种方式，还可以使用 Delegate  这几">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-10-18T02:28:00.000Z">
+<meta property="article:modified_time" content="2022-10-27T01:14:50.199Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="QSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-QT/qss/Qt_Style_Sheet(QSS)总体描述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/10/18/QT/qss/Qt_Style_Sheet(QSS)%E6%80%BB%E4%BD%93%E6%8F%8F%E8%BF%B0/" class="article-date">
+  <time class="dt-published" datetime="2022-10-18T02:28:00.000Z" itemprop="datePublished">2022-10-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/QT/">QT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Qt Style Sheet (QSS) 总体描述
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="qss-总体描述">QSS 总体描述</h1>
+<p>Qt 提供的 widget 的默认外观很多时候都不符合项目的界面需求，必须要改，修改一个 widget 的外观（Look and Feel）有以下的方法：</p>
+<ul>
+<li>继承 Widget，然后在 paintEvent() 里绘制</li>
+<li>继承 QStyle</li>
+<li>使用 QSS（Qt Style Sheet）</li>
+<li>对于 item view 来说还有一种方式，还可以使用 Delegate</li>
+</ul>
+<p>这几种方式里最简单灵活的是使用 QSS，虽然有人说 QSS 的效率低，具体有多低没测试过，但是在普通 PC 上从来没感觉出来，再说现在的硬件也不差这么点性能消耗，随便一个写的差点的函数的消耗就比这多的多，作为一个实用主义者，不追求理论上的效率完美，能满足需求的前提下什么好用用什么，QSS 就是修改 widget 外观的首选，什么效果不满意，修改一下 QSS 的文件就可以看到效果，甚至不需要重新编译、打包发布程序（如果把 QSS 放在文件中，并且实现动态加载 QSS）。</p>
+<h1 id="qt-官网对-qss-的说明">QT 官网对 QSS 的说明</h1>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet.html">QT5.15LTS_QSS 介绍点击此链接</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet.html"><code>Overview</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet-syntax.html"><code>The Style Sheet Syntax</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet-designer.html"><code>Qt Designer Integration</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet-customizing.html"><code>Customizing Qt Widgets Using Style Sheets</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet-reference.html"><code>Qt Style Sheets Reference</code></a></li>
+<li><a target="_blank" rel="noopener" href="https://doc.qt.io/qt-5/stylesheet-examples.html"><code>Qt Style Sheets Examples</code></a></li>
+</ul></li>
+<li><p>本地查找： QT creator --&gt; 帮助 --&gt;切换到索引</p>
+<ul>
+<li>搜索：QT Style Sheets Examples
+<ul>
+<li>Qt Style Sheets Examples 例子很全面</li>
+<li>Qt Style Sheets Reference 讲解得非常仔细</li>
+</ul></li>
+</ul></li>
+</ul>
+<p><strong>我们按下面的章节来介绍 QSS:</strong></p>
+<ul>
+<li>QSS 基础</li>
+<li>加载 QSS</li>
+<li>盒子模型</li>
+<li>QSS 选择器</li>
+<li>Border-Image</li>
+<li>QSS Subcontrol</li>
+<li>QSS CalendarWidget</li>
+</ul>
+<h1 id="参考资料">参考资料</h1>
+<p>此处的 QT 文档来源于网上“公孙二狗”的 <a target="_blank" rel="noopener" href="http://qtdebug.com/qtbook/">QT 杂谈</a></p>
+<h2 id="网上有资料为什么还要拷贝过来再写一遍">网上有资料为什么还要拷贝过来，再写一遍？</h2>
+<p>原因如下：</p>
+<ul>
+<li>1 网上文档资料和自己需要的文档资料不一致，网上资料分散在各个不同的地方</li>
+<li>2 同一份资料，网上会搜索出很多，有好有坏，自己记录，有个起步的判断标准，不要浪费时间在各个不同资料的比对上面。</li>
+<li>3 网上的资料，过一段时间后，有些会消失不见！！如“网易微博”/“腾讯微博”，更不说很多个人网站，随时会消失。</li>
+<li>4 自己整理的随笔和技术文档，符合自己的需求，并且集中在一起，直接分门安类查看，方便。 同时打赏在 gitee 上记录，资料不会消失！（电脑坏了可以从 gitee 上回复；gitee 上不行，电脑本地有备份.）</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/10/18/QT/qss/Qt_Style_Sheet(QSS)%E6%80%BB%E4%BD%93%E6%8F%8F%E8%BF%B0/" data-id="cl9y15qf9000fcwtjf5o5dxcq" data-title="Qt Style Sheet (QSS) 总体描述" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/10/18/QT/qss/QSS%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          QSS基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/10/17/tool_use/blog/hexo%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">hexo博客最简单的入门教程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 12.5px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 17.5px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/01/tool_use/markdown%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">markdown数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E6%84%A4%E6%80%92%E7%9A%84%E7%89%9B%E9%A1%BF_%E6%B1%AA%E6%9C%89/">愤怒的牛顿 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/01/history/%E6%95%B0%E5%AD%A6/%E5%85%AB%E5%8D%A6%E5%BE%AE%E7%A7%AF%E5%88%86_%E6%B1%AA%E6%9C%89/">八卦微积分 汪有</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/tool_use/blog/Hexo%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">Hexo博客支持数学公式</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/history/%E6%95%B0%E5%AD%A6/%E5%BE%AE%E7%A7%AF%E5%88%86%E7%9A%84%E5%8E%86%E5%8F%B2(%E4%BA%8C)_%E8%B5%B7%E6%BA%90%E4%B9%8B%E7%89%9B%E9%A1%BF/">微积分的历史(二) 起源之牛顿</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
