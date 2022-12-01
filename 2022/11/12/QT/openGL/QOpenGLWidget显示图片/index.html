@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>QOpenGLWidget显示图片 | akebee</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="QOpenGLWidget 显示图片 Qt 显示图片的控件有很多，QLabel，QPushButton 等。 QOpenGLWidget 是 Qt5 之后用来渲染 OpenGL 控件，使程序员对 OpenGL 的操作更简单. 本文讲解用 QOpenGLWidget 来显示图片，当然 QOpenGLWidget 也可以来显示视频。 下面介绍如何显示图片，基本步骤如下： 1 在控件栏找到 Ope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="QOpenGLWidget显示图片">
+<meta property="og:url" content="https://sunooms.github.io/2022/11/12/QT/openGL/QOpenGLWidget%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/index.html">
+<meta property="og:site_name" content="akebee">
+<meta property="og:description" content="QOpenGLWidget 显示图片 Qt 显示图片的控件有很多，QLabel，QPushButton 等。 QOpenGLWidget 是 Qt5 之后用来渲染 OpenGL 控件，使程序员对 OpenGL 的操作更简单. 本文讲解用 QOpenGLWidget 来显示图片，当然 QOpenGLWidget 也可以来显示视频。 下面介绍如何显示图片，基本步骤如下： 1 在控件栏找到 Ope">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/11/12/HI1cYUbXofEe9rs.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/12/FUH6jgZYh25Sae7.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/12/ONWMqKdu2iRyDxz.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/12/acEtq1TZCRW9LUI.png">
+<meta property="article:published_time" content="2022-11-12T11:20:00.000Z">
+<meta property="article:modified_time" content="2022-11-16T01:23:14.012Z">
+<meta property="article:author" content="akebee">
+<meta property="article:tag" content="OpenGL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/12/HI1cYUbXofEe9rs.png">
+  
+    <link rel="alternate" href="/atom.xml" title="akebee" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">akebee</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">akebee blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sunooms.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-QT/openGL/QOpenGLWidget显示图片" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/11/12/QT/openGL/QOpenGLWidget%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" class="article-date">
+  <time class="dt-published" datetime="2022-11-12T11:20:00.000Z" itemprop="datePublished">2022-11-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/QT/">QT</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      QOpenGLWidget显示图片
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="qopenglwidget-显示图片">QOpenGLWidget 显示图片</h1>
+<p>Qt 显示图片的控件有很多，QLabel，QPushButton 等。 QOpenGLWidget 是 Qt5 之后用来渲染 OpenGL 控件，使程序员对 OpenGL 的操作更简单. 本文讲解用 QOpenGLWidget 来显示图片，当然 QOpenGLWidget 也可以来显示视频。</p>
+<p>下面介绍如何显示图片，基本步骤如下：</p>
+<h2 id="在控件栏找到-openglwidget拖到界面上">1 在控件栏找到 OpenGLWidget，拖到界面上</h2>
+<figure>
+<img src="https://s2.loli.net/2022/11/12/HI1cYUbXofEe9rs.png" alt="OpenGL_Widget_place.png" /><figcaption aria-hidden="true">OpenGL_Widget_place.png</figcaption>
+</figure>
+<p>控件布局效果如下：</p>
+<h2 id="右键该控件提升为-myglwidget">2 右键该控件提升为 MyGLWidget</h2>
+<h3 id="如何提升控件">如何提升控件？</h3>
+<p>在 <code>OpenGL Widget</code> 控件上鼠标“右击”----》选择<code>promoted widget</code>(中文版是 <code>提升为...</code>)</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/12/FUH6jgZYh25Sae7.png" alt="widget提升为.png" /><figcaption aria-hidden="true">widget提升为.png</figcaption>
+</figure>
+<h2 id="创建一个-qt-类-myglwidget">3 创建一个 QT 类 MyGLWidget，</h2>
+<p>创建一个 C/c++的 QT 类 MyGLWidget, 选择 widget，创建后，<strong>把<code>QWidget</code>改成<code>QOpenGLWidget</code></strong> 即 Qt 类 MyGLWidget,使其派生于 QOpenGLWidget</p>
+<figure>
+<img src="https://s2.loli.net/2022/11/12/ONWMqKdu2iRyDxz.png" alt="myglwidget_new.png" /><figcaption aria-hidden="true">myglwidget_new.png</figcaption>
+</figure>
+<p>myglwidget.h 头文件如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#ifndef MYGLWIDGET_H</span><br><span class="line">#define MYGLWIDGET_H</span><br><span class="line"></span><br><span class="line">#include &lt;QOpenGLWidget&gt;</span><br><span class="line">#include &lt;QPainter&gt;</span><br><span class="line"></span><br><span class="line">class MyGLWidget : public QOpenGLWidget &#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line">public:</span><br><span class="line">    explicit MyGLWidget(QWidget* parent = nullptr);</span><br><span class="line">    ~MyGLWidget();</span><br><span class="line"></span><br><span class="line">    //重写paintEvent方法</span><br><span class="line">    void paintEvent(QPaintEvent* e);</span><br><span class="line"></span><br><span class="line">signals:</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif // MYGLWIDGET_H</span><br></pre></td></tr></table></figure>
+<p>myglwidget.cpp 文件如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;myglwidget.h&quot;</span><br><span class="line"></span><br><span class="line">#include &lt;QDebug&gt;</span><br><span class="line"></span><br><span class="line">MyGLWidget::MyGLWidget(QWidget* parent)</span><br><span class="line">    : QOpenGLWidget(parent)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyGLWidget::~MyGLWidget()</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MyGLWidget::paintEvent(QPaintEvent* e)</span><br><span class="line">&#123;</span><br><span class="line">    QPainter painter;</span><br><span class="line">    painter.begin(this);</span><br><span class="line"></span><br><span class="line">    QImage img;</span><br><span class="line">    img.load(&quot;D:/1.jpg&quot;);</span><br><span class="line"></span><br><span class="line">    qDebug() &lt;&lt; &quot;haha load 1.jpg success&quot;;</span><br><span class="line"></span><br><span class="line">    //设置图像自适应窗口大小</span><br><span class="line">    QImage result = img.scaled(this-&gt;width(), this-&gt;height(), Qt::KeepAspectRatio, Qt::SmoothTransformation);</span><br><span class="line"></span><br><span class="line">    painter.drawImage(QPoint(0, 0), result);</span><br><span class="line">    painter.end();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="编译运行如下">4 编译运行如下：</h2>
+<figure>
+<img src="https://s2.loli.net/2022/11/12/acEtq1TZCRW9LUI.png" alt="opengl_show_picture.png" /><figcaption aria-hidden="true">opengl_show_picture.png</figcaption>
+</figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sunooms.github.io/2022/11/12/QT/openGL/QOpenGLWidget%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/" data-id="clb4ew65g0010cctje9d3dcrm" data-title="QOpenGLWidget显示图片" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenGL/" rel="tag">OpenGL</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/11/14/tool_use/ts%E6%96%87%E4%BB%B6%E5%A6%82%E4%BD%95%E4%B8%8B%E8%BD%BD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          如何下载ts文件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/11/10/education/%E5%B9%BC%E5%84%BF%E5%9B%AD%E5%B0%8F%E5%AD%A6%E6%95%99%E8%82%B2/%E8%8B%B1%E8%AF%AD%E5%8E%9F%E7%89%88%E5%88%86%E7%BA%A7%E9%98%85%E8%AF%BB--%E8%B5%B7%E6%AD%A5%E4%BB%A5%E5%8F%8A%E8%BF%9B%E9%98%B6%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">英语原版分级阅读</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/QT/">QT</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tool-use/">tool_use</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8E%86%E5%8F%B2/">历史</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%BC%E5%84%BF%E5%9B%AD%E5%B0%8F%E5%AD%A6%E6%95%99%E8%82%B2/">幼儿园小学教育</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenGL/" rel="tag">OpenGL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QSS/" rel="tag">QSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QT/" rel="tag">QT</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QT-tips/" rel="tag">QT_tips</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RAZ/" rel="tag">RAZ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/V4L2/" rel="tag">V4L2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vulkan/" rel="tag">Vulkan</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/" rel="tag">database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/openCV/" rel="tag">openCV</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2/" rel="tag">历史</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E5%8D%9A/" rel="tag">微博</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E6%B4%A5%E6%A0%91/" rel="tag">牛津树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AF%AD%E5%90%AF%E8%92%99/" rel="tag">英语启蒙</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/OpenGL/" style="font-size: 11.67px;">OpenGL</a> <a href="/tags/QSS/" style="font-size: 20px;">QSS</a> <a href="/tags/QT/" style="font-size: 10px;">QT</a> <a href="/tags/QT-tips/" style="font-size: 10px;">QT_tips</a> <a href="/tags/RAZ/" style="font-size: 10px;">RAZ</a> <a href="/tags/SpringBoot/" style="font-size: 16.67px;">SpringBoot</a> <a href="/tags/V4L2/" style="font-size: 10px;">V4L2</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/Vulkan/" style="font-size: 10px;">Vulkan</a> <a href="/tags/database/" style="font-size: 15px;">database</a> <a href="/tags/openCV/" style="font-size: 10px;">openCV</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/%E5%8E%86%E5%8F%B2/" style="font-size: 13.33px;">历史</a> <a href="/tags/%E5%BE%AE%E5%8D%9A/" style="font-size: 18.33px;">微博</a> <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 15px;">数学</a> <a href="/tags/%E7%89%9B%E6%B4%A5%E6%A0%91/" style="font-size: 10px;">牛津树</a> <a href="/tags/%E8%8B%B1%E8%AF%AD%E5%90%AF%E8%92%99/" style="font-size: 11.67px;">英语启蒙</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">十一月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/11/28/tool_use/java/SpringBoot/SpringBoot%E5%AD%A6%E4%B9%A0_2_mysql_mybatis/">SpringBoot 2.7教程：SpringBoot 整合 Mysql 项目应用 Mybatis-Plus</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/24/tool_use/java/SpringBoot/SpingBoot%E5%AD%A6%E4%B9%A0_1_helloworld/">SpringBoot学习_1_helloworld</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/24/tool_use/java/SpringBoot/SpringBoot%E5%AD%A6%E4%B9%A0_2_mysql/">SpringBoot学习_2_mysql</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/24/tool_use/java/SpringBoot/SpringBoot%E5%AD%A6%E4%B9%A0_3_%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E4%B8%8E%E4%BB%A3%E7%A0%81%E8%A7%92%E8%89%B2/">SpringBoot学习_3_项目的三层架构与代码角色</a>
+          </li>
+        
+          <li>
+            <a href="/2022/11/24/tool_use/java/VSCode%E6%90%AD%E5%BB%BASpringBoot%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">VSCode搭建SpringBoot开发环境</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 akebee<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
